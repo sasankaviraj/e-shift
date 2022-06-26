@@ -26,11 +26,6 @@ namespace e_shift.Factory
             return factory;
         }
 
-        public void getFactory()
-        {
-            throw new NotImplementedException();
-        }
-
         public dynamic getFactory(Instance instance)
         {
             switch (instance)

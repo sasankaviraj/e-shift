@@ -15,7 +15,7 @@ namespace e_shift.Forms
 {
     public partial class AddUserType : Form
     {
-        UserTypeService userTypeService;
+        private UserTypeService userTypeService;
         public AddUserType()
         {
             InitializeComponent();
