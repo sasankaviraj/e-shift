@@ -10,7 +10,7 @@ namespace e_shift.Service.Impl
 {
     public class UserTypeServiceImpl : UserTypeService
     {
-        AppDBContext dbContext;
+        private AppDBContext dbContext;
         public UserTypeServiceImpl()
         {
             dbContext = AppDbConnection.getAppDBContext();

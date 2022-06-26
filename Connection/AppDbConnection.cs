@@ -9,7 +9,7 @@ namespace e_shift.Connection
 {
     public class AppDbConnection
     {
-        static AppDBContext appDBContext;
+        private static AppDBContext appDBContext;
 
         public static AppDBContext getAppDBContext()
         {
