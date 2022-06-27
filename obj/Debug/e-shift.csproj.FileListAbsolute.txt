@@ -14,3 +14,4 @@ C:\London Metropolitan University\AD\coursework 1\e-shift\e-shift\bin\Debug\Enti
 C:\London Metropolitan University\AD\coursework 1\e-shift\e-shift\bin\Debug\EntityFramework.SqlServer.xml
 C:\London Metropolitan University\AD\coursework 1\e-shift\e-shift\obj\Debug\e_shift.Forms.AddUserType.resources
 C:\London Metropolitan University\AD\coursework 1\e-shift\e-shift\obj\Debug\e-shift.csproj.CopyComplete
+C:\London Metropolitan University\AD\coursework 1\e-shift\e-shift\obj\Debug\e_shift.Forms.ManageUsers.resources

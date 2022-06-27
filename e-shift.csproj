@@ -68,14 +68,24 @@
     <Compile Include="Forms\AddUserType.Designer.cs">
       <DependentUpon>AddUserType.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\ManageUsers.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\ManageUsers.Designer.cs">
+      <DependentUpon>ManageUsers.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Service\Impl\UserServiceimpl.cs" />
     <Compile Include="Service\Impl\UserTypeServiceImpl.cs" />
     <Compile Include="Service\UserService.cs" />
     <Compile Include="Service\UserTypeService.cs" />
+    <Compile Include="Util\EncryptDecryptPassword.cs" />
     <EmbeddedResource Include="Forms\AddUserType.resx">
       <DependentUpon>AddUserType.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\ManageUsers.resx">
+      <DependentUpon>ManageUsers.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

@@ -20,6 +20,27 @@ namespace e_shift.Service.Impl
             throw new NotImplementedException();
         }
 
+        public UserType Get(int id)
+        {
+            try
+            {
+                return dbContext.UserTypes.Find(id);
+            }
+            catch (Exception)
+            {
+                throw new Exception("Failed To Find User Types");
+            }
+        }
+
+        public List<UserType> GetAll()
+        {
+            try {
+                return dbContext.UserTypes.ToList<UserType>();
+            } catch (Exception) {
+                throw new Exception("Failed To Find User Types");
+            }
+        }
+
         public void Save(UserType userType)
         {
             try
@@ -29,7 +50,7 @@ namespace e_shift.Service.Impl
                 dbContext.SaveChanges();
             }
             catch (Exception){
-                throw new Exception("Failed To Save User");
+                throw new Exception("Failed To Save User Type");
             }
         }
     }

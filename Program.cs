@@ -17,7 +17,7 @@ namespace e_shift
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new AddUserType());
+            Application.Run(new ManageUsers());
         }
     }
 }
