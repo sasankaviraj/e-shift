@@ -36,11 +36,6 @@ namespace e_shift.Forms
             });
         }
 
-        private void cmbUserTypes_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            Console.WriteLine(cmbUserTypes.ValueMember);
-        }
-
         private void btnSave_Click(object sender, EventArgs e)
         {
             try

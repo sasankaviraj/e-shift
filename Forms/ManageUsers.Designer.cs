@@ -50,7 +50,6 @@
             this.cmbUserTypes.Size = new System.Drawing.Size(135, 21);
             this.cmbUserTypes.TabIndex = 0;
             this.cmbUserTypes.Text = "Select User Type";
-            this.cmbUserTypes.SelectedIndexChanged += new System.EventHandler(this.cmbUserTypes_SelectedIndexChanged);
             // 
             // label2
             // 
