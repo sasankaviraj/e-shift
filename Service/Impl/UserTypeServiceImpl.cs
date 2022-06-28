@@ -45,12 +45,16 @@ namespace e_shift.Service.Impl
         {
             try
             {
+                UserType res = dbContext.UserTypes.Where(ut => ut.Type == userType.Type).FirstOrDefault();
+                if (res != null) {
+                    throw new Exception("User Type Already Defined");
+                }
                 userType.CreatedAt = DateTime.Now;
                 var result = dbContext.UserTypes.Add(userType);
                 dbContext.SaveChanges();
             }
-            catch (Exception){
-                throw new Exception("Failed To Save User Type");
+            catch (Exception e){
+                throw new Exception("Failed To Save User Type. "+e.Message);
             }
         }
     }

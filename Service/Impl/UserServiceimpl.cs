@@ -49,13 +49,17 @@ namespace e_shift.Service.Impl
         {
             try
             {
+                User res = dbContext.Users.Where(u => u.UserName == user.UserName).FirstOrDefault();
+                if (res!=null) {
+                    throw new Exception("Username Already Defined");
+                }
                 user.CreatedAt = DateTime.Now;
                 var result = dbContext.Users.Add(user);
                 dbContext.SaveChanges();
             }
-            catch (Exception)
+            catch (Exception e)
             {
-                throw new Exception("Failed To Save User");
+                throw new Exception("Failed To Save User. "+e.Message);
             }
         }
 

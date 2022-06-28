@@ -19,13 +19,16 @@ namespace e_shift.Forms
         private UserTypeService userTypeService;
         private UserService userService;
         private List<UserType> userTypes = new List<UserType>();
-        private Dictionary<string, int> userTypeMap = new Dictionary<string, int>();
+        private List<User> users = new List<User>();
+        private Dictionary<string, int> userTypeMap;
         public ManageUsers()
         {
             InitializeComponent();
+            userTypeMap = new Dictionary<string, int>();
             userTypeService = ServiceFactory.getInstance().getFactory(ServiceFactory.Instance.USER_TYPE);
             userService = ServiceFactory.getInstance().getFactory(ServiceFactory.Instance.USER);
             FetchUserTypes();
+            FetchAllUsers();
         }
 
         void FetchUserTypes() {
@@ -36,11 +39,36 @@ namespace e_shift.Forms
             });
         }
 
+        void FetchAllUsers() {
+            users.Clear();
+            DataTable dt = new DataTable();
+            dt.Columns.Add("Name");
+            dt.Columns.Add("Address");
+            dt.Columns.Add("Contact Number");
+            users = userService.GetAll();
+
+            users.ForEach(value => {
+                DataRow row = dt.NewRow();
+                row["Name"] = value.Name;
+                row["Address"] = value.Address;
+                row["Contact Number"] = value.ContactNumber;
+                dt.Rows.Add(row);
+            });
+
+            foreach (DataRow dataRow in dt.Rows) {
+                int v = tblUsers.Rows.Add();
+                tblUsers.Rows[v].Cells[0].Value = dataRow["Name"].ToString();
+                tblUsers.Rows[v].Cells[1].Value = dataRow["Address"].ToString();
+                tblUsers.Rows[v].Cells[2].Value = dataRow["Contact Number"].ToString();
+            }
+        }
+
         private void btnSave_Click(object sender, EventArgs e)
         {
             try
             {
                 var user = new User();
+                user.Name = txtName.Text;
                 user.UserName = txtUsername.Text;
                 var encryptedPassword = EncryptDecryptPassword.EncryptPlainTextToCipherText(txtPassword.Text);
                 user.Password = txtPassword.Text;
@@ -49,12 +77,11 @@ namespace e_shift.Forms
                 UserType userType = userTypeService.Get(userTypeMap[cmbUserTypes.Text]);
                 user.UserType = userType;
                 userService.Save(user);
+                FetchAllUsers();
             }
             catch (Exception ex) {
                 Console.WriteLine(ex);
             }
         }
-
-
     }
 }

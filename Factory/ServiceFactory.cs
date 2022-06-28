@@ -11,6 +11,11 @@ namespace e_shift.Factory
     {
         private static ServiceFactory factory;
 
+        private ServiceFactory()
+        {
+
+        }
+
         public enum Instance
         {
             USER_TYPE,
