@@ -12,6 +12,7 @@ namespace e_shift.Service
         void Save(UserType userType);
         void Delete(int id);
         UserType Get(int id);
+        UserType Find(string userType);
         List<UserType> GetAll();
     }
 }

@@ -1,5 +1,6 @@
 ﻿using e_shift.Data;
 using e_shift.Factory;
+using e_shift.Model;
 using e_shift.Service;
 using e_shift.Util;
 using System;
@@ -19,8 +20,10 @@ namespace e_shift.Forms
         private UserTypeService userTypeService;
         private UserService userService;
         private List<UserType> userTypes = new List<UserType>();
-        private List<User> users = new List<User>();
+        private List<UserTableModel> users = new List<UserTableModel>();
         private Dictionary<string, int> userTypeMap;
+        private bool setUpdate = false;
+        private DataGridViewRow row;
         public ManageUsers()
         {
             InitializeComponent();
@@ -29,6 +32,7 @@ namespace e_shift.Forms
             userService = ServiceFactory.getInstance().getFactory(ServiceFactory.Instance.USER);
             FetchUserTypes();
             FetchAllUsers();
+            setTable();
         }
 
         void FetchUserTypes() {
@@ -40,48 +44,114 @@ namespace e_shift.Forms
         }
 
         void FetchAllUsers() {
-            users.Clear();
-            DataTable dt = new DataTable();
-            dt.Columns.Add("Name");
-            dt.Columns.Add("Address");
-            dt.Columns.Add("Contact Number");
             users = userService.GetAll();
+            tblUsers.DataSource = users;
+        }
 
-            users.ForEach(value => {
-                DataRow row = dt.NewRow();
-                row["Name"] = value.Name;
-                row["Address"] = value.Address;
-                row["Contact Number"] = value.ContactNumber;
-                dt.Rows.Add(row);
-            });
-
-            foreach (DataRow dataRow in dt.Rows) {
-                int v = tblUsers.Rows.Add();
-                tblUsers.Rows[v].Cells[0].Value = dataRow["Name"].ToString();
-                tblUsers.Rows[v].Cells[1].Value = dataRow["Address"].ToString();
-                tblUsers.Rows[v].Cells[2].Value = dataRow["Contact Number"].ToString();
-            }
+        void setTable() {
+            DataGridViewButtonColumn buttonColumnEdit = new DataGridViewButtonColumn
+            {
+                Text = "Edit",
+                UseColumnTextForButtonValue = true,
+            };
+            DataGridViewButtonColumn buttonColumnDelete = new DataGridViewButtonColumn
+            {
+                Text = "Delete",
+                UseColumnTextForButtonValue = true,
+            };
+            tblUsers.Columns.Insert(5, buttonColumnEdit);
+            tblUsers.Columns.Insert(6, buttonColumnDelete);
         }
 
         private void btnSave_Click(object sender, EventArgs e)
         {
             try
             {
-                var user = new User();
-                user.Name = txtName.Text;
-                user.UserName = txtUsername.Text;
-                var encryptedPassword = EncryptDecryptPassword.EncryptPlainTextToCipherText(txtPassword.Text);
-                user.Password = txtPassword.Text;
-                user.Address = txtAddress.Text;
-                user.ContactNumber = txtContactNo.Text;
-                UserType userType = userTypeService.Get(userTypeMap[cmbUserTypes.Text]);
-                user.UserType = userType;
-                userService.Save(user);
-                FetchAllUsers();
+                if (setUpdate)
+                {
+                    var user = new User();
+                    user.Name = Validator.ValidateName(txtName.Text);
+                    user.Id = Convert.ToInt32(row.Cells[2].Value);
+                    user.Address = txtAddress.Text;
+                    user.ContactNumber = Validator.ValidateContactNumber(txtContactNo.Text);
+                    UserType userType = userTypeService.Get(userTypeMap[cmbUserTypes.Text]);
+                    user.UserType = userType;
+                    userService.Update(user);
+                    FetchAllUsers();
+                    MessageBox.Show("User Details Updated Successfully");
+                    clearFields();
+                }
+                else
+                {
+                    var user = new User();
+                    user.Name = Validator.ValidateName(txtName.Text);
+                    user.UserName = txtUsername.Text;
+                    var encryptedPassword = EncryptDecryptPassword.EncryptPlainTextToCipherText(txtPassword.Text);
+                    user.Password = encryptedPassword;
+                    user.Address = txtAddress.Text;
+                    user.ContactNumber = Validator.ValidateContactNumber(txtContactNo.Text);
+                    UserType userType = userTypeService.Get(userTypeMap[cmbUserTypes.Text]);
+                    user.UserType = userType;
+                    userService.Save(user);
+                    FetchAllUsers();
+                    MessageBox.Show("User Saved Successfully");
+                }
             }
-            catch (Exception ex) {
+            catch (Exception ex)
+            {
                 Console.WriteLine(ex);
+                MessageBox.Show("Failed To Save The user. " + ex.Message);
             }
+        }
+
+        private void tblUsers_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            clearFields();
+            row = tblUsers.Rows[e.RowIndex];
+            row.Selected = true;
+            if (e.ColumnIndex == 0) {
+                setUpdate = true;
+                txtUsername.Enabled = false;
+                txtPassword.Enabled = false;
+
+                txtName.Text = row.Cells[3].Value.ToString();
+                txtAddress.Text = row.Cells[4].Value.ToString();
+                txtContactNo.Text = row.Cells[5].Value.ToString();
+                cmbUserTypes.Text = row.Cells[6].Value.ToString();
+            }
+            if (e.ColumnIndex == 1) {
+                DialogResult dialogResult = MessageBox.Show("Are You Sure?", "Delete User", MessageBoxButtons.YesNo);
+                if (dialogResult == DialogResult.Yes)
+                {
+                    try {
+                        userService.Delete(Convert.ToInt32(row.Cells[2].Value));
+                        FetchAllUsers();
+                        MessageBox.Show("User Deleted Successfully");
+                    }
+                    catch (Exception ex) {
+                        MessageBox.Show(ex.Message);
+                    }
+                }
+                
+                
+            }
+            
+        }
+
+        private void clearFields() {
+            txtUsername.Enabled = true;
+            txtPassword.Enabled = true;
+            cmbUserTypes.ResetText();
+            txtName.Clear();
+            txtUsername.Clear();
+            txtPassword.Clear();
+            txtAddress.Clear();
+            txtContactNo.Clear();
+        }
+
+        private void btnClear_Click(object sender, EventArgs e)
+        {
+            clearFields();
         }
     }
 }

@@ -20,6 +20,19 @@ namespace e_shift.Service.Impl
             throw new NotImplementedException();
         }
 
+        public UserType Find(string userType)
+        {
+            
+            try
+            {
+                return dbContext.UserTypes.Where(ut => ut.Type == userType).FirstOrDefault();
+            }
+            catch (Exception)
+            {
+                throw new Exception("Failed To Find User Types");
+            }
+        }
+
         public UserType Get(int id)
         {
             try

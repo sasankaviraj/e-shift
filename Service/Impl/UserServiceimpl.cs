@@ -1,7 +1,9 @@
 ﻿using e_shift.Connection;
 using e_shift.Data;
+using e_shift.Model;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -18,7 +20,17 @@ namespace e_shift.Service.Impl
         }
         public void Delete(int id)
         {
-            throw new NotImplementedException();
+            try
+            {
+                User user = dbContext.Users.Find(id);
+                user.IsDeleted = true;
+                user.DeletedAt = DateTime.Now;
+                dbContext.SaveChanges();
+            }
+            catch (Exception e)
+            {
+                throw new Exception("Failed To Delete User. " + e.Message);
+            }
         }
 
         public User Get(int id)
@@ -27,17 +39,23 @@ namespace e_shift.Service.Impl
             {
                 return dbContext.Users.Find(id);
             }
-            catch (Exception)
+            catch (Exception e)
             {
-                throw new Exception("Failed To Find User");
+                throw new Exception("Failed To Find User "+e.Message);
             }
         }
 
-        public List<User> GetAll()
+        public List<UserTableModel> GetAll()
         {
             try
             {
-                return dbContext.Users.ToList<User>();
+                return dbContext.Users.Include(ut => ut.UserType).Where(u => u.IsDeleted == false).Select(res=> new UserTableModel() {
+                    Id = res.Id,
+                    Address = res.Address,
+                    Name = res.Name,
+                    ContactNumber = res.ContactNumber,
+                    UserType = res.UserType.Type
+                }).ToList<UserTableModel>();
             }
             catch (Exception)
             {
@@ -53,8 +71,9 @@ namespace e_shift.Service.Impl
                 if (res!=null) {
                     throw new Exception("Username Already Defined");
                 }
-                user.CreatedAt = DateTime.Now;
+                user.CreatedAt = DateTime.Now;                
                 var result = dbContext.Users.Add(user);
+                dbContext.Entry(user.UserType).State = EntityState.Unchanged;
                 dbContext.SaveChanges();
             }
             catch (Exception e)
@@ -63,9 +82,22 @@ namespace e_shift.Service.Impl
             }
         }
 
-        public void Update(User user, int id)
+        public void Update(User user)
         {
-            throw new NotImplementedException();
+            try
+            {
+                var find = Get(user.Id);
+                find.ModifiedAt = DateTime.Now;
+                find.Name = user.Name;
+                find.Address = user.Address;
+                find.ContactNumber = user.ContactNumber;
+                find.UserType = user.UserType;
+                dbContext.Entry(find).State = EntityState.Modified;
+                dbContext.Entry(find.UserType).State = EntityState.Unchanged;
+                dbContext.SaveChanges();
+            }catch   (Exception e) {
+                throw new Exception("Failed To Update User. " + e.Message);
+            }
         }
     }
 }

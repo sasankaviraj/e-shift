@@ -43,25 +43,24 @@
             this.txtName = new System.Windows.Forms.TextBox();
             this.lblName = new System.Windows.Forms.Label();
             this.tblUsers = new System.Windows.Forms.DataGridView();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.panel1 = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.tblUsers)).BeginInit();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // cmbUserTypes
             // 
+            this.cmbUserTypes.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbUserTypes.FormattingEnabled = true;
-            this.cmbUserTypes.Location = new System.Drawing.Point(144, 61);
+            this.cmbUserTypes.Location = new System.Drawing.Point(117, 15);
             this.cmbUserTypes.Name = "cmbUserTypes";
-            this.cmbUserTypes.Size = new System.Drawing.Size(135, 21);
+            this.cmbUserTypes.Size = new System.Drawing.Size(357, 21);
             this.cmbUserTypes.TabIndex = 0;
-            this.cmbUserTypes.Text = "Select User Type";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(53, 156);
+            this.label2.Location = new System.Drawing.Point(25, 91);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(55, 13);
             this.label2.TabIndex = 2;
@@ -69,23 +68,23 @@
             // 
             // txtUsername
             // 
-            this.txtUsername.Location = new System.Drawing.Point(144, 153);
+            this.txtUsername.Location = new System.Drawing.Point(116, 88);
             this.txtUsername.Name = "txtUsername";
-            this.txtUsername.Size = new System.Drawing.Size(135, 20);
+            this.txtUsername.Size = new System.Drawing.Size(357, 20);
             this.txtUsername.TabIndex = 3;
             // 
             // txtPassword
             // 
-            this.txtPassword.Location = new System.Drawing.Point(144, 197);
+            this.txtPassword.Location = new System.Drawing.Point(116, 125);
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.PasswordChar = '*';
-            this.txtPassword.Size = new System.Drawing.Size(135, 20);
+            this.txtPassword.Size = new System.Drawing.Size(357, 20);
             this.txtPassword.TabIndex = 5;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(53, 200);
+            this.label3.Location = new System.Drawing.Point(25, 128);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(53, 13);
             this.label3.TabIndex = 4;
@@ -93,15 +92,15 @@
             // 
             // txtAddress
             // 
-            this.txtAddress.Location = new System.Drawing.Point(144, 240);
+            this.txtAddress.Location = new System.Drawing.Point(117, 162);
             this.txtAddress.Name = "txtAddress";
-            this.txtAddress.Size = new System.Drawing.Size(135, 20);
+            this.txtAddress.Size = new System.Drawing.Size(357, 20);
             this.txtAddress.TabIndex = 7;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(53, 243);
+            this.label4.Location = new System.Drawing.Point(26, 165);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(45, 13);
             this.label4.TabIndex = 6;
@@ -109,15 +108,15 @@
             // 
             // txtContactNo
             // 
-            this.txtContactNo.Location = new System.Drawing.Point(143, 280);
+            this.txtContactNo.Location = new System.Drawing.Point(115, 198);
             this.txtContactNo.Name = "txtContactNo";
-            this.txtContactNo.Size = new System.Drawing.Size(135, 20);
+            this.txtContactNo.Size = new System.Drawing.Size(358, 20);
             this.txtContactNo.TabIndex = 9;
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(53, 287);
+            this.label5.Location = new System.Drawing.Point(25, 205);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(84, 13);
             this.label5.TabIndex = 8;
@@ -126,7 +125,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(53, 64);
+            this.label1.Location = new System.Drawing.Point(26, 18);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(56, 13);
             this.label1.TabIndex = 10;
@@ -134,7 +133,7 @@
             // 
             // btnSave
             // 
-            this.btnSave.Location = new System.Drawing.Point(204, 332);
+            this.btnSave.Location = new System.Drawing.Point(398, 235);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(75, 20);
             this.btnSave.TabIndex = 11;
@@ -144,24 +143,25 @@
             // 
             // btnClear
             // 
-            this.btnClear.Location = new System.Drawing.Point(111, 332);
+            this.btnClear.Location = new System.Drawing.Point(305, 235);
             this.btnClear.Name = "btnClear";
             this.btnClear.Size = new System.Drawing.Size(75, 20);
             this.btnClear.TabIndex = 12;
             this.btnClear.Text = "Clear";
             this.btnClear.UseVisualStyleBackColor = true;
+            this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
             // 
             // txtName
             // 
-            this.txtName.Location = new System.Drawing.Point(143, 110);
+            this.txtName.Location = new System.Drawing.Point(116, 52);
             this.txtName.Name = "txtName";
-            this.txtName.Size = new System.Drawing.Size(135, 20);
+            this.txtName.Size = new System.Drawing.Size(358, 20);
             this.txtName.TabIndex = 14;
             // 
             // lblName
             // 
             this.lblName.AutoSize = true;
-            this.lblName.Location = new System.Drawing.Point(53, 113);
+            this.lblName.Location = new System.Drawing.Point(26, 55);
             this.lblName.Name = "lblName";
             this.lblName.Size = new System.Drawing.Size(35, 13);
             this.lblName.TabIndex = 13;
@@ -169,33 +169,36 @@
             // 
             // tblUsers
             // 
+            this.tblUsers.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.tblUsers.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.tblUsers.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Column1,
-            this.Column2,
-            this.Column3});
-            this.tblUsers.Location = new System.Drawing.Point(324, 68);
+            this.tblUsers.Location = new System.Drawing.Point(12, 294);
             this.tblUsers.Name = "tblUsers";
-            this.tblUsers.Size = new System.Drawing.Size(442, 144);
+            this.tblUsers.Size = new System.Drawing.Size(776, 144);
             this.tblUsers.TabIndex = 15;
+            this.tblUsers.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.tblUsers_CellContentClick);
             // 
-            // Column1
+            // panel1
             // 
-            this.Column1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Column1.HeaderText = "Name";
-            this.Column1.Name = "Column1";
-            // 
-            // Column2
-            // 
-            this.Column2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Column2.HeaderText = "Address";
-            this.Column2.Name = "Column2";
-            // 
-            // Column3
-            // 
-            this.Column3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Column3.HeaderText = "Contact Number";
-            this.Column3.Name = "Column3";
+            this.panel1.AutoSize = true;
+            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel1.Controls.Add(this.label2);
+            this.panel1.Controls.Add(this.txtName);
+            this.panel1.Controls.Add(this.cmbUserTypes);
+            this.panel1.Controls.Add(this.lblName);
+            this.panel1.Controls.Add(this.txtUsername);
+            this.panel1.Controls.Add(this.btnClear);
+            this.panel1.Controls.Add(this.label3);
+            this.panel1.Controls.Add(this.btnSave);
+            this.panel1.Controls.Add(this.txtPassword);
+            this.panel1.Controls.Add(this.label1);
+            this.panel1.Controls.Add(this.label4);
+            this.panel1.Controls.Add(this.txtContactNo);
+            this.panel1.Controls.Add(this.txtAddress);
+            this.panel1.Controls.Add(this.label5);
+            this.panel1.Location = new System.Drawing.Point(12, 12);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(776, 274);
+            this.panel1.TabIndex = 16;
             // 
             // ManageUsers
             // 
@@ -203,23 +206,12 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.tblUsers);
-            this.Controls.Add(this.txtName);
-            this.Controls.Add(this.lblName);
-            this.Controls.Add(this.btnClear);
-            this.Controls.Add(this.btnSave);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.txtContactNo);
-            this.Controls.Add(this.label5);
-            this.Controls.Add(this.txtAddress);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.txtPassword);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.txtUsername);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.cmbUserTypes);
+            this.Controls.Add(this.panel1);
             this.Name = "ManageUsers";
-            this.Text = "ManageUsers";
+            this.Text = "Manage Users";
             ((System.ComponentModel.ISupportInitialize)(this.tblUsers)).EndInit();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -242,8 +234,6 @@
         private System.Windows.Forms.TextBox txtName;
         private System.Windows.Forms.Label lblName;
         private System.Windows.Forms.DataGridView tblUsers;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
+        private System.Windows.Forms.Panel panel1;
     }
 }

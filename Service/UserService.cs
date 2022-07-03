@@ -1,4 +1,5 @@
 ﻿using e_shift.Data;
+using e_shift.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,8 +12,8 @@ namespace e_shift.Service
     {
         void Save(User user);
         void Delete(int id);
-        void Update(User user, int id);
+        void Update(User user);
         User Get(int id);
-        List<User> GetAll();
+        List<UserTableModel> GetAll();
     }
 }
