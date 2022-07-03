@@ -35,7 +35,7 @@ namespace e_shift.Forms
             setTable();
         }
 
-        void FetchUserTypes() {
+        private void FetchUserTypes() {
             userTypes = userTypeService.GetAll();
             userTypes.ForEach(value => {
                 userTypeMap.Add(value.Type, value.Id);
@@ -43,12 +43,12 @@ namespace e_shift.Forms
             });
         }
 
-        void FetchAllUsers() {
+        private void FetchAllUsers() {
             users = userService.GetAll();
             tblUsers.DataSource = users;
         }
 
-        void setTable() {
+        private void setTable() {
             DataGridViewButtonColumn buttonColumnEdit = new DataGridViewButtonColumn
             {
                 Text = "Edit",
