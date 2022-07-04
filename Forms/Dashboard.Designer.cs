@@ -66,7 +66,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(186, 577);
+            this.panel1.Size = new System.Drawing.Size(186, 677);
             this.panel1.TabIndex = 0;
             // 
             // panelNav
@@ -84,7 +84,7 @@
             this.btnSignOut.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSignOut.Font = new System.Drawing.Font("Nirmala UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSignOut.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(126)))), ((int)(((byte)(249)))));
-            this.btnSignOut.Location = new System.Drawing.Point(0, 535);
+            this.btnSignOut.Location = new System.Drawing.Point(0, 635);
             this.btnSignOut.Name = "btnSignOut";
             this.btnSignOut.Size = new System.Drawing.Size(186, 42);
             this.btnSignOut.TabIndex = 9;
@@ -260,7 +260,7 @@
             this.txtSearchWithJobNo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(200)))), ((int)(((byte)(200)))));
             this.txtSearchWithJobNo.Location = new System.Drawing.Point(539, 32);
             this.txtSearchWithJobNo.Name = "txtSearchWithJobNo";
-            this.txtSearchWithJobNo.Size = new System.Drawing.Size(292, 28);
+            this.txtSearchWithJobNo.Size = new System.Drawing.Size(408, 28);
             this.txtSearchWithJobNo.TabIndex = 2;
             this.txtSearchWithJobNo.Text = "Search With The Job Number";
             // 
@@ -269,7 +269,7 @@
             this.btnExit.FlatAppearance.BorderSize = 0;
             this.btnExit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnExit.ForeColor = System.Drawing.Color.White;
-            this.btnExit.Location = new System.Drawing.Point(914, 12);
+            this.btnExit.Location = new System.Drawing.Point(1014, 12);
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(25, 25);
             this.btnExit.TabIndex = 3;
@@ -281,7 +281,7 @@
             // 
             this.pnlDashBoard.Location = new System.Drawing.Point(193, 144);
             this.pnlDashBoard.Name = "pnlDashBoard";
-            this.pnlDashBoard.Size = new System.Drawing.Size(746, 421);
+            this.pnlDashBoard.Size = new System.Drawing.Size(846, 521);
             this.pnlDashBoard.TabIndex = 5;
             // 
             // Dashboard
@@ -289,7 +289,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(51)))), ((int)(((byte)(73)))));
-            this.ClientSize = new System.Drawing.Size(951, 577);
+            this.ClientSize = new System.Drawing.Size(1051, 677);
             this.Controls.Add(this.pnlDashBoard);
             this.Controls.Add(this.btnExit);
             this.Controls.Add(this.txtSearchWithJobNo);

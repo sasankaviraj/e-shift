@@ -42,7 +42,7 @@
             this.pnlDashBoard.Controls.Add(this.panel3);
             this.pnlDashBoard.Location = new System.Drawing.Point(12, 12);
             this.pnlDashBoard.Name = "pnlDashBoard";
-            this.pnlDashBoard.Size = new System.Drawing.Size(776, 424);
+            this.pnlDashBoard.Size = new System.Drawing.Size(776, 576);
             this.pnlDashBoard.TabIndex = 6;
             // 
             // panel3
@@ -94,7 +94,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(51)))), ((int)(((byte)(73)))));
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(800, 600);
             this.Controls.Add(this.pnlDashBoard);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "DashboardForm";

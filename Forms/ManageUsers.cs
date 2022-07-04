@@ -70,7 +70,7 @@ namespace e_shift.Forms
                 if (setUpdate)
                 {
                     var user = new User();
-                    user.Name = Validator.ValidateName(txtName.Text);
+                    user.Name = Validator.ValidateField(txtName.Text,"Name");
                     user.Id = Convert.ToInt32(row.Cells[2].Value);
                     user.Address = txtAddress.Text;
                     user.ContactNumber = Validator.ValidateContactNumber(txtContactNo.Text);
@@ -84,7 +84,7 @@ namespace e_shift.Forms
                 else
                 {
                     var user = new User();
-                    user.Name = Validator.ValidateName(txtName.Text);
+                    user.Name = Validator.ValidateField(txtName.Text,"Name");
                     user.UserName = txtUsername.Text;
                     var encryptedPassword = EncryptDecryptPassword.EncryptPlainTextToCipherText(txtPassword.Text);
                     user.Password = encryptedPassword;

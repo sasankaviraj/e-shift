@@ -10,6 +10,7 @@ namespace e_shift.Service
     public interface UserTypeService
     {
         void Save(UserType userType);
+        void Update(UserType userType);
         void Delete(int id);
         UserType Get(int id);
         UserType Find(string userType);

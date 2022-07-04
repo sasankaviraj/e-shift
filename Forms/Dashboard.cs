@@ -52,12 +52,11 @@ namespace e_shift.Forms
 
         private void btnDashboard_Click(object sender, EventArgs e)
         {
+            loadForm(new DashboardForm());
             panelNav.Height = btnDashboard.Height;
             panelNav.Top = btnDashboard.Top;
             panelNav.Left = btnDashboard.Left;
             btnDashboard.BackColor = Color.FromArgb(46,51,73);
-
-            loadForm(new DashboardForm());
         }
 
         private void btnCustomers_Click(object sender, EventArgs e)
@@ -78,12 +77,11 @@ namespace e_shift.Forms
 
         private void btnUsers_Click(object sender, EventArgs e)
         {
+            loadForm(new ManageUsers());
             panelNav.Height = btnUsers.Height;
             panelNav.Top = btnUsers.Top;
             panelNav.Left = btnUsers.Left;
             btnUsers.BackColor = Color.FromArgb(46, 51, 73);
-
-            loadForm(new ManageUsers());
         }
 
         private void btnLocations_Click(object sender, EventArgs e)
@@ -96,10 +94,12 @@ namespace e_shift.Forms
 
         private void btnUsertypes_Click(object sender, EventArgs e)
         {
+            loadForm(new AddUserType());
             panelNav.Height = btnUsertypes.Height;
             panelNav.Top = btnUsertypes.Top;
             panelNav.Left = btnUsertypes.Left;
             btnUsertypes.BackColor = Color.FromArgb(46, 51, 73);
+
         }
 
         private void btnReports_Click(object sender, EventArgs e)

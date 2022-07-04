@@ -9,10 +9,10 @@ namespace e_shift.Util
 {
     public class Validator
     {
-        public static string ValidateName(string input) {
+        public static string ValidateField(string input,string type) {
             bool v = Regex.IsMatch(input, @"^[a-zA-Z]+$");
             if (!v) {
-                throw new Exception("Invalid Characters In The Name");
+                throw new Exception("Invalid Characters In The "+type);
             }
             return input;
         }
