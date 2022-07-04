@@ -16,3 +16,4 @@ C:\London Metropolitan University\AD\coursework 1\e-shift\e-shift\obj\Debug\e_sh
 C:\London Metropolitan University\AD\coursework 1\e-shift\e-shift\obj\Debug\e-shift.csproj.CopyComplete
 C:\London Metropolitan University\AD\coursework 1\e-shift\e-shift\obj\Debug\e_shift.Forms.ManageUsers.resources
 C:\London Metropolitan University\AD\coursework 1\e-shift\e-shift\obj\Debug\e_shift.Migrations.Initial.resources
+C:\London Metropolitan University\AD\coursework 1\e-shift\e-shift\obj\Debug\e_shift.Forms.Dashboard.resources
