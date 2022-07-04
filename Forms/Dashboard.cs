@@ -32,9 +32,22 @@ namespace e_shift.Forms
             btnDashboard.BackColor = Color.FromArgb(46, 51, 73);
         }
 
+        public void loadForm(object Form) {
+            if (this.pnlDashBoard.Controls.Count>0) {
+                this.pnlDashBoard.Controls.RemoveAt(0);
+            }
+
+            Form f = Form as Form;
+            f.TopLevel = false;
+            f.Dock = DockStyle.Fill;
+            this.pnlDashBoard.Controls.Add(f);
+            this.pnlDashBoard.Tag = f;
+            f.Show();
+        }
+
         private void Dashboard_Load(object sender, EventArgs e)
         {
-
+            loadForm(new DashboardForm());
         }
 
         private void btnDashboard_Click(object sender, EventArgs e)
@@ -43,6 +56,8 @@ namespace e_shift.Forms
             panelNav.Top = btnDashboard.Top;
             panelNav.Left = btnDashboard.Left;
             btnDashboard.BackColor = Color.FromArgb(46,51,73);
+
+            loadForm(new DashboardForm());
         }
 
         private void btnCustomers_Click(object sender, EventArgs e)
@@ -67,6 +82,8 @@ namespace e_shift.Forms
             panelNav.Top = btnUsers.Top;
             panelNav.Left = btnUsers.Left;
             btnUsers.BackColor = Color.FromArgb(46, 51, 73);
+
+            loadForm(new ManageUsers());
         }
 
         private void btnLocations_Click(object sender, EventArgs e)
@@ -126,6 +143,11 @@ namespace e_shift.Forms
         private void btnReports_Leave(object sender, EventArgs e)
         {
             btnReports.BackColor = Color.FromArgb(24, 30, 54);
+        }
+
+        private void btnExit_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
         }
     }
 }
