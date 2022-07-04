@@ -32,7 +32,7 @@ namespace e_shift.Forms
             userService = ServiceFactory.getInstance().getFactory(ServiceFactory.Instance.USER);
             FetchUserTypes();
             FetchAllUsers();
-            setTable();
+            SetTable();
         }
 
         private void FetchUserTypes() {
@@ -48,7 +48,7 @@ namespace e_shift.Forms
             tblUsers.DataSource = users;
         }
 
-        private void setTable() {
+        private void SetTable() {
             DataGridViewButtonColumn buttonColumnEdit = new DataGridViewButtonColumn
             {
                 Text = "Edit",
@@ -100,7 +100,7 @@ namespace e_shift.Forms
             catch (Exception ex)
             {
                 Console.WriteLine(ex);
-                MessageBox.Show("Failed To Save The user. " + ex.Message);
+                MessageBox.Show("Failed To Save The User. " + ex.Message);
             }
         }
 

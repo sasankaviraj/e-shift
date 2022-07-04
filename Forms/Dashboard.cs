@@ -61,6 +61,7 @@ namespace e_shift.Forms
 
         private void btnCustomers_Click(object sender, EventArgs e)
         {
+            loadForm(new CustomerForm());
             panelNav.Height = btnCustomers.Height;
             panelNav.Top = btnCustomers.Top;
             panelNav.Left = btnCustomers.Left;

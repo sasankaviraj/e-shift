@@ -19,7 +19,8 @@ namespace e_shift.Factory
         public enum Instance
         {
             USER_TYPE,
-            USER
+            USER,
+            CUSTOMER
         }
 
         public static ServiceFactory getInstance()
@@ -39,6 +40,8 @@ namespace e_shift.Factory
                     return new UserTypeServiceImpl();
                 case Instance.USER:
                     return new UserServiceimpl();
+                case Instance.CUSTOMER:
+                    return new CustomerServiceImpl();
                 default: return null;
             }
         }
