@@ -87,6 +87,7 @@ namespace e_shift.Forms
 
         private void btnLocations_Click(object sender, EventArgs e)
         {
+            loadForm(new LocationForm());
             panelNav.Height = btnLocations.Height;
             panelNav.Top = btnLocations.Top;
             panelNav.Left = btnLocations.Left;

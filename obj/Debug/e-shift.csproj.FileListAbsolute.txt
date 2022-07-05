@@ -20,3 +20,5 @@ C:\London Metropolitan University\AD\coursework 1\e-shift\e-shift\obj\Debug\e_sh
 C:\London Metropolitan University\AD\coursework 1\e-shift\e-shift\obj\Debug\e_shift.Forms.DashboardForm.resources
 C:\London Metropolitan University\AD\coursework 1\e-shift\e-shift\obj\Debug\e_shift.Migrations.Customer.resources
 C:\London Metropolitan University\AD\coursework 1\e-shift\e-shift\obj\Debug\e_shift.Forms.CustomerForm.resources
+C:\London Metropolitan University\AD\coursework 1\e-shift\e-shift\obj\Debug\e_shift.Migrations.Locations.resources
+C:\London Metropolitan University\AD\coursework 1\e-shift\e-shift\obj\Debug\e_shift.Forms.LocationForm.resources

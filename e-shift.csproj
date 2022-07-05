@@ -60,6 +60,10 @@
     <Compile Include="Data\AppDBContext.cs" />
     <Compile Include="Data\BaseEntity.cs" />
     <Compile Include="Data\Customer.cs" />
+    <Compile Include="Data\DeliveryLocation.cs" />
+    <Compile Include="Data\Job.cs" />
+    <Compile Include="Data\Load.cs" />
+    <Compile Include="Data\PickupLocation.cs" />
     <Compile Include="Data\User.cs" />
     <Compile Include="Data\UserType.cs" />
     <Compile Include="Factory\ServiceFactory.cs" />
@@ -87,6 +91,12 @@
     <Compile Include="Forms\DashboardForm.Designer.cs">
       <DependentUpon>DashboardForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\LocationForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\LocationForm.Designer.cs">
+      <DependentUpon>LocationForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\ManageUsers.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -101,6 +111,10 @@
     <Compile Include="Migrations\202207041512431_Customer.designer.cs">
       <DependentUpon>202207041512431_Customer.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202207050652441_Locations.cs" />
+    <Compile Include="Migrations\202207050652441_Locations.designer.cs">
+      <DependentUpon>202207050652441_Locations.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Model\UserTableModel.cs" />
     <Compile Include="Program.cs" />
@@ -111,9 +125,13 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <Compile Include="Service\CustomerService.cs" />
+    <Compile Include="Service\DeliveryLocationService.cs" />
     <Compile Include="Service\Impl\CustomerServiceImpl.cs" />
+    <Compile Include="Service\Impl\DeliveryLocationServiceImpl.cs" />
+    <Compile Include="Service\Impl\PickupLocationServiceImpl.cs" />
     <Compile Include="Service\Impl\UserServiceimpl.cs" />
     <Compile Include="Service\Impl\UserTypeServiceImpl.cs" />
+    <Compile Include="Service\PickupLocationService.cs" />
     <Compile Include="Service\UserService.cs" />
     <Compile Include="Service\UserTypeService.cs" />
     <Compile Include="Util\EncryptDecryptPassword.cs" />
@@ -130,6 +148,9 @@
     <EmbeddedResource Include="Forms\DashboardForm.resx">
       <DependentUpon>DashboardForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\LocationForm.resx">
+      <DependentUpon>LocationForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\ManageUsers.resx">
       <DependentUpon>ManageUsers.cs</DependentUpon>
     </EmbeddedResource>
@@ -138,6 +159,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202207041512431_Customer.resx">
       <DependentUpon>202207041512431_Customer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202207050652441_Locations.resx">
+      <DependentUpon>202207050652441_Locations.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

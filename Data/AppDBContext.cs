@@ -12,5 +12,7 @@ namespace e_shift.Data
         public DbSet<UserType> UserTypes { get; set; }
         public DbSet<User> Users { get; set; }
         public DbSet<Customer> Customers { get; set; }
+        public DbSet<PickupLocation> PickupLocations { get; set; }
+        public DbSet<DeliveryLocation> DeliveryLocations { get; set; }
     }
 }

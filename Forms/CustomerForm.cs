@@ -138,8 +138,6 @@ namespace e_shift.Forms
                         MessageBox.Show(ex.Message);
                     }
                 }
-
-
             }
         }
     }
