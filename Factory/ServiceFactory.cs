@@ -22,7 +22,9 @@ namespace e_shift.Factory
             USER,
             CUSTOMER,
             PICKUP_LOCATION,
-            DELIVERY_LOCATION
+            DELIVERY_LOCATION,
+            JOB,
+            LOAD
         }
 
         public static ServiceFactory getInstance()
@@ -48,6 +50,10 @@ namespace e_shift.Factory
                     return new PickupLocationServiceImpl();
                 case Instance.DELIVERY_LOCATION:
                     return new DeliveryLocationServiceImpl();
+                case Instance.JOB:
+                    return new JobServiceImpl();
+                case Instance.LOAD:
+                    return new LoadServiceImpl();
                 default: return null;
             }
         }

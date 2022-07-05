@@ -14,5 +14,7 @@ namespace e_shift.Data
         public DbSet<Customer> Customers { get; set; }
         public DbSet<PickupLocation> PickupLocations { get; set; }
         public DbSet<DeliveryLocation> DeliveryLocations { get; set; }
+        public DbSet<Job> Jobs { get; set; }
+        public DbSet<Load> Loads { get; set; }
     }
 }

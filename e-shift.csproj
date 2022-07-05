@@ -103,17 +103,9 @@
     <Compile Include="Forms\ManageUsers.Designer.cs">
       <DependentUpon>ManageUsers.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202206280710064_Initial.cs" />
-    <Compile Include="Migrations\202206280710064_Initial.designer.cs">
-      <DependentUpon>202206280710064_Initial.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202207041512431_Customer.cs" />
-    <Compile Include="Migrations\202207041512431_Customer.designer.cs">
-      <DependentUpon>202207041512431_Customer.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202207050652441_Locations.cs" />
-    <Compile Include="Migrations\202207050652441_Locations.designer.cs">
-      <DependentUpon>202207050652441_Locations.cs</DependentUpon>
+    <Compile Include="Migrations\202207051755597_Initial.cs" />
+    <Compile Include="Migrations\202207051755597_Initial.designer.cs">
+      <DependentUpon>202207051755597_Initial.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Model\UserTableModel.cs" />
@@ -128,9 +120,13 @@
     <Compile Include="Service\DeliveryLocationService.cs" />
     <Compile Include="Service\Impl\CustomerServiceImpl.cs" />
     <Compile Include="Service\Impl\DeliveryLocationServiceImpl.cs" />
+    <Compile Include="Service\Impl\JobServiceImpl.cs" />
+    <Compile Include="Service\Impl\LoadServiceImpl.cs" />
     <Compile Include="Service\Impl\PickupLocationServiceImpl.cs" />
     <Compile Include="Service\Impl\UserServiceimpl.cs" />
     <Compile Include="Service\Impl\UserTypeServiceImpl.cs" />
+    <Compile Include="Service\JobService.cs" />
+    <Compile Include="Service\LoadService.cs" />
     <Compile Include="Service\PickupLocationService.cs" />
     <Compile Include="Service\UserService.cs" />
     <Compile Include="Service\UserTypeService.cs" />
@@ -154,14 +150,8 @@
     <EmbeddedResource Include="Forms\ManageUsers.resx">
       <DependentUpon>ManageUsers.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202206280710064_Initial.resx">
-      <DependentUpon>202206280710064_Initial.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202207041512431_Customer.resx">
-      <DependentUpon>202207041512431_Customer.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202207050652441_Locations.resx">
-      <DependentUpon>202207050652441_Locations.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202207051755597_Initial.resx">
+      <DependentUpon>202207051755597_Initial.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

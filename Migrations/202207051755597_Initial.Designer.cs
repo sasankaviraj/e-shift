@@ -7,13 +7,13 @@ namespace e_shift.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.4.4")]
-    public sealed partial class Customer : IMigrationMetadata
+    public sealed partial class Initial : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(Customer));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(Initial));
         
         string IMigrationMetadata.Id
         {
-            get { return "202207041512431_Customer"; }
+            get { return "202207051755597_Initial"; }
         }
         
         string IMigrationMetadata.Source
