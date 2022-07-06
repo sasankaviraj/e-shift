@@ -8,6 +8,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Runtime.InteropServices;
+using e_shift.Util;
+
 namespace e_shift.Forms
 {
     public partial class Dashboard : Form
@@ -30,6 +32,7 @@ namespace e_shift.Forms
             panelNav.Top = btnDashboard.Top;
             panelNav.Left = btnDashboard.Left;
             btnDashboard.BackColor = Color.FromArgb(46, 51, 73);
+            lblUserName.Text = LoggedUserTemp.LoggedUserTempName;
         }
 
         public void loadForm(object Form) {
@@ -150,6 +153,13 @@ namespace e_shift.Forms
         private void btnExit_Click(object sender, EventArgs e)
         {
             Application.Exit();
+        }
+
+        private void btnSignOut_Click(object sender, EventArgs e)
+        {
+            LoginForm loginForm = new LoginForm();
+            loginForm.Show();
+            this.Hide();
         }
     }
 }

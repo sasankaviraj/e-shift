@@ -20,3 +20,4 @@ C:\London Metropolitan University\AD\coursework 1\e-shift\e-shift\obj\Debug\e_sh
 C:\London Metropolitan University\AD\coursework 1\e-shift\e-shift\obj\Debug\e_shift.Forms.CustomerForm.resources
 C:\London Metropolitan University\AD\coursework 1\e-shift\e-shift\obj\Debug\e_shift.Forms.LocationForm.resources
 C:\London Metropolitan University\AD\coursework 1\e-shift\e-shift\obj\Debug\e_shift.Migrations.Initial.resources
+C:\London Metropolitan University\AD\coursework 1\e-shift\e-shift\obj\Debug\e_shift.Forms.LoginForm.resources

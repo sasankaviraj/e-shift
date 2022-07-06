@@ -14,6 +14,7 @@ namespace e_shift.Service
         void Delete(int id);
         void Update(User user);
         User Get(int id);
+        bool Find(User user);
         List<UserTableModel> GetAll();
     }
 }

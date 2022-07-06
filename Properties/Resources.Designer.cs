@@ -79,5 +79,15 @@ namespace e_shift.Properties {
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap rosebox_BFdSCxmqvYc_unsplash {
+            get {
+                object obj = ResourceManager.GetObject("rosebox-BFdSCxmqvYc-unsplash", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
     }
 }

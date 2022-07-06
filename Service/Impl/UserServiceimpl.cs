@@ -1,6 +1,7 @@
 ﻿using e_shift.Connection;
 using e_shift.Data;
 using e_shift.Model;
+using e_shift.Util;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -30,6 +31,23 @@ namespace e_shift.Service.Impl
             catch (Exception e)
             {
                 throw new Exception("Failed To Delete User. " + e.Message);
+            }
+        }
+
+        public bool Find(User user)
+        {
+            try
+            {
+                User response = dbContext.Users.Include(ut => ut.UserType).Where(u => u.UserName == user.UserName).FirstOrDefault();
+                Console.WriteLine("resp... "+response);
+                if (response == null) {
+                    throw new Exception("Invalid Username ");
+                }
+                string decryptedPassword = EncryptDecryptPassword.DecryptCipherTextToPlainText(response.Password);
+                return decryptedPassword.Equals(user.Password) ? true : false;
+            }
+            catch (Exception e) {
+                throw new Exception("Failed To Login " + e.Message);
             }
         }
 
