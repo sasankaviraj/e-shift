@@ -34,17 +34,12 @@ namespace e_shift.Forms
             user.UserName = txtUsername.Text;
             user.Password = txtPassword.Text;
             try {
-                bool v = userService.Find(user);
-                if (v)
-                {
-                    LoggedUserTemp.LoggedUserTempName = user.UserName;
-                    Dashboard dashboard = new Dashboard();
-                    dashboard.Show();
-                    this.Hide();
-                }
-                else {
-                    throw new Exception("Invalid Password");
-                }
+                user = userService.Find(user);
+                LoggedUserTemp.LoggedUserTempName = user.UserName;
+                LoggedUserTemp.LoggedUserId = user.Id.ToString();
+                Dashboard dashboard = new Dashboard();
+                dashboard.Show();
+                this.Hide();
             } catch (Exception ex) {
                 MessageBox.Show(ex.Message);
             }

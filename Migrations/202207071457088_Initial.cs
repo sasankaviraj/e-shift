@@ -46,6 +46,7 @@
                         ToAddress = c.String(nullable: false),
                         IsDelivered = c.Boolean(nullable: false),
                         IsSuccess = c.Boolean(nullable: false),
+                        IsApproved = c.Boolean(nullable: false),
                         IsDeleted = c.Boolean(nullable: false),
                         CreatedAt = c.DateTime(nullable: false),
                         ModifiedAt = c.DateTime(),

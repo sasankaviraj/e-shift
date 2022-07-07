@@ -34,7 +34,7 @@ namespace e_shift.Service.Impl
             }
         }
 
-        public bool Find(User user)
+        public User Find(User user)
         {
             try
             {
@@ -44,7 +44,11 @@ namespace e_shift.Service.Impl
                     throw new Exception("Invalid Username ");
                 }
                 string decryptedPassword = EncryptDecryptPassword.DecryptCipherTextToPlainText(response.Password);
-                return decryptedPassword.Equals(user.Password) ? true : false;
+                if (!decryptedPassword.Equals(user.Password))
+                {
+                    throw new Exception("Invalid Password ");
+                }
+                return response;
             }
             catch (Exception e) {
                 throw new Exception("Failed To Login " + e.Message);

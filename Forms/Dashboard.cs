@@ -73,6 +73,7 @@ namespace e_shift.Forms
 
         private void btnJobs_Click(object sender, EventArgs e)
         {
+            loadForm(new ManageJobs());
             panelNav.Height = btnJobs.Height;
             panelNav.Top = btnJobs.Top;
             panelNav.Left = btnJobs.Left;

@@ -25,5 +25,6 @@ namespace e_shift.Data
         public ICollection<Load> Loads { get; set; }
         public bool IsDelivered { get; set; }
         public bool IsSuccess { get; set; }
+        public bool IsApproved { get; set; }
     }
 }

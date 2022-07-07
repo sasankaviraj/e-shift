@@ -13,7 +13,7 @@ namespace e_shift.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "202207051755597_Initial"; }
+            get { return "202207071457088_Initial"; }
         }
         
         string IMigrationMetadata.Source
