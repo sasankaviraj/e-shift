@@ -39,8 +39,9 @@ namespace e_shift.Forms
         }
 
         private void SetTable() {
-            
-            tblLoads.DataSource = loads;
+            var list = new BindingList<Load>(loads);
+            tblLoads.DataSource = list;
+            tblLoads.AllowUserToAddRows = false;
             tblLoads.Columns["IsDeleted"].Visible = false;
             tblLoads.Columns["CreatedAt"].Visible = false;
             tblLoads.Columns["ModifiedAt"].Visible = false;
