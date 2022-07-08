@@ -31,7 +31,7 @@ namespace e_shift.Service.Impl
             throw new NotImplementedException();
         }
 
-        public void Save(Job job)
+        public Job Save(Job job)
         {
             try
             {
@@ -42,6 +42,7 @@ namespace e_shift.Service.Impl
                 dbContext.Entry(job.PickupLocation).State = EntityState.Unchanged;
                 dbContext.Entry(job.User).State = EntityState.Unchanged;
                 dbContext.SaveChanges();
+                return job;
             }
             catch (Exception e)
             {

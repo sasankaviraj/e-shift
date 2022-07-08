@@ -9,7 +9,7 @@ namespace e_shift.Service
 {
     public interface JobService
     {
-        void Save(Job job);
+        Job Save(Job job);
         Job Get(int id);
         void Delete(int id);
         void Update(Job job);

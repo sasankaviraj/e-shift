@@ -1,4 +1,6 @@
 ﻿using e_shift.Data;
+using e_shift.Factory;
+using e_shift.Service;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -16,11 +18,13 @@ namespace e_shift.Forms
     {
         private Job job;
         private List<Load> loads;
+        private LoadService loadService;
         public LoadForm(Job job)
         {
             this.job = job;
             InitializeComponent();
             loads = new List<Load>();
+            loadService = ServiceFactory.getInstance().getFactory(ServiceFactory.Instance.LOAD);
         }
 
         private void btnExit_Click(object sender, EventArgs e)
@@ -56,6 +60,17 @@ namespace e_shift.Forms
             };
             if (!tblLoads.Columns.Contains("Delete")) {
                 tblLoads.Columns.Insert(3, buttonColumnDelete);
+            }
+        }
+
+        private void btnSave_Click(object sender, EventArgs e)
+        {
+            try {
+                loadService.Save(loads, job);
+                MessageBox.Show("Saved Successfully");
+            }
+            catch (Exception ex) {
+                MessageBox.Show(ex.Message);
             }
         }
     }

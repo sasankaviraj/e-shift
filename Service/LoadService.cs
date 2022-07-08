@@ -9,7 +9,7 @@ namespace e_shift.Service
 {
     public interface LoadService
     {
-        void Save(Load load);
+        void Save(List<Load> loadList,Job job);
         Load Get(int id);
         void Delete(int id);
         void Update(Load load);
