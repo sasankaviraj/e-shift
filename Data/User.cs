@@ -11,8 +11,11 @@ namespace e_shift.Data
     {
         public int Id { get; set; }
         [Required]
-        public string Name { get; set; }
+        public string FirstName { get; set; }
         [Required]
+        public string LastName { get; set; }
+        [Required]
+        public string NIC { get; set; }
         public string UserName { get; set; }
         [Required]
         public string Password { get; set; }
@@ -21,6 +24,6 @@ namespace e_shift.Data
         [MaxLength(10)]
         public string ContactNumber { get; set; }
         [Required]
-        public UserType UserType { get; set; }
+        public string UserType { get; set; }
     }
 }

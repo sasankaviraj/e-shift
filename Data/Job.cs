@@ -13,7 +13,7 @@ namespace e_shift.Data
         [Required]
         public User User { get; set; }
         [Required]
-        public Customer Customer { get; set; }
+        public Transport Transport { get; set; }
         [Required]
         public string FromAddress { get; set; }
         [Required]

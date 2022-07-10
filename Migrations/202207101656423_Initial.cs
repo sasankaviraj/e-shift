@@ -51,19 +51,19 @@
                         CreatedAt = c.DateTime(nullable: false),
                         ModifiedAt = c.DateTime(),
                         DeletedAt = c.DateTime(),
-                        Customer_Id = c.Int(nullable: false),
                         DeliveryLocation_Id = c.Int(nullable: false),
                         PickupLocation_Id = c.Int(nullable: false),
+                        Transport_Id = c.Int(nullable: false),
                         User_Id = c.Int(nullable: false),
                     })
                 .PrimaryKey(t => t.Id)
-                .ForeignKey("dbo.Customers", t => t.Customer_Id, cascadeDelete: true)
                 .ForeignKey("dbo.DeliveryLocations", t => t.DeliveryLocation_Id, cascadeDelete: true)
                 .ForeignKey("dbo.PickupLocations", t => t.PickupLocation_Id, cascadeDelete: true)
+                .ForeignKey("dbo.Transports", t => t.Transport_Id, cascadeDelete: true)
                 .ForeignKey("dbo.Users", t => t.User_Id, cascadeDelete: true)
-                .Index(t => t.Customer_Id)
                 .Index(t => t.DeliveryLocation_Id)
                 .Index(t => t.PickupLocation_Id)
+                .Index(t => t.Transport_Id)
                 .Index(t => t.User_Id);
             
             CreateTable(
@@ -78,10 +78,27 @@
                         ModifiedAt = c.DateTime(),
                         DeletedAt = c.DateTime(),
                         Job_Id = c.Int(nullable: false),
+                        ProductType_Id = c.Int(),
                     })
                 .PrimaryKey(t => t.Id)
                 .ForeignKey("dbo.Jobs", t => t.Job_Id, cascadeDelete: true)
-                .Index(t => t.Job_Id);
+                .ForeignKey("dbo.Products", t => t.ProductType_Id)
+                .Index(t => t.Job_Id)
+                .Index(t => t.ProductType_Id);
+            
+            CreateTable(
+                "dbo.Products",
+                c => new
+                    {
+                        Id = c.Int(nullable: false, identity: true),
+                        Type = c.String(),
+                        Charges = c.Decimal(nullable: false, precision: 18, scale: 2),
+                        IsDeleted = c.Boolean(nullable: false),
+                        CreatedAt = c.DateTime(nullable: false),
+                        ModifiedAt = c.DateTime(),
+                        DeletedAt = c.DateTime(),
+                    })
+                .PrimaryKey(t => t.Id);
             
             CreateTable(
                 "dbo.PickupLocations",
@@ -97,23 +114,42 @@
                 .PrimaryKey(t => t.Id);
             
             CreateTable(
-                "dbo.Users",
+                "dbo.Transports",
                 c => new
                     {
                         Id = c.Int(nullable: false, identity: true),
-                        Name = c.String(nullable: false),
-                        UserName = c.String(nullable: false),
-                        Password = c.String(nullable: false),
-                        Address = c.String(),
-                        ContactNumber = c.String(nullable: false, maxLength: 10),
+                        Vehicle = c.String(),
+                        RegNo = c.String(),
+                        Driver = c.String(),
+                        ChargesPerKm = c.Decimal(nullable: false, precision: 18, scale: 2),
                         IsDeleted = c.Boolean(nullable: false),
                         CreatedAt = c.DateTime(nullable: false),
                         ModifiedAt = c.DateTime(),
                         DeletedAt = c.DateTime(),
-                        UserType_Id = c.Int(nullable: false),
+                    })
+                .PrimaryKey(t => t.Id);
+            
+            CreateTable(
+                "dbo.Users",
+                c => new
+                    {
+                        Id = c.Int(nullable: false, identity: true),
+                        FirstName = c.String(nullable: false),
+                        LastName = c.String(nullable: false),
+                        NIC = c.String(nullable: false),
+                        UserName = c.String(),
+                        Password = c.String(nullable: false),
+                        Address = c.String(),
+                        ContactNumber = c.String(nullable: false, maxLength: 10),
+                        UserType = c.String(nullable: false),
+                        IsDeleted = c.Boolean(nullable: false),
+                        CreatedAt = c.DateTime(nullable: false),
+                        ModifiedAt = c.DateTime(),
+                        DeletedAt = c.DateTime(),
+                        UserType_Id = c.Int(),
                     })
                 .PrimaryKey(t => t.Id)
-                .ForeignKey("dbo.UserTypes", t => t.UserType_Id, cascadeDelete: true)
+                .ForeignKey("dbo.UserTypes", t => t.UserType_Id)
                 .Index(t => t.UserType_Id);
             
             CreateTable(
@@ -133,21 +169,25 @@
         
         public override void Down()
         {
-            DropForeignKey("dbo.Jobs", "User_Id", "dbo.Users");
             DropForeignKey("dbo.Users", "UserType_Id", "dbo.UserTypes");
+            DropForeignKey("dbo.Jobs", "User_Id", "dbo.Users");
+            DropForeignKey("dbo.Jobs", "Transport_Id", "dbo.Transports");
             DropForeignKey("dbo.Jobs", "PickupLocation_Id", "dbo.PickupLocations");
+            DropForeignKey("dbo.Loads", "ProductType_Id", "dbo.Products");
             DropForeignKey("dbo.Loads", "Job_Id", "dbo.Jobs");
             DropForeignKey("dbo.Jobs", "DeliveryLocation_Id", "dbo.DeliveryLocations");
-            DropForeignKey("dbo.Jobs", "Customer_Id", "dbo.Customers");
             DropIndex("dbo.Users", new[] { "UserType_Id" });
+            DropIndex("dbo.Loads", new[] { "ProductType_Id" });
             DropIndex("dbo.Loads", new[] { "Job_Id" });
             DropIndex("dbo.Jobs", new[] { "User_Id" });
+            DropIndex("dbo.Jobs", new[] { "Transport_Id" });
             DropIndex("dbo.Jobs", new[] { "PickupLocation_Id" });
             DropIndex("dbo.Jobs", new[] { "DeliveryLocation_Id" });
-            DropIndex("dbo.Jobs", new[] { "Customer_Id" });
             DropTable("dbo.UserTypes");
             DropTable("dbo.Users");
+            DropTable("dbo.Transports");
             DropTable("dbo.PickupLocations");
+            DropTable("dbo.Products");
             DropTable("dbo.Loads");
             DropTable("dbo.Jobs");
             DropTable("dbo.DeliveryLocations");

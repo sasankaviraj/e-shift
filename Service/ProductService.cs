@@ -1,5 +1,4 @@
 ﻿using e_shift.Data;
-using e_shift.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,12 +7,13 @@ using System.Threading.Tasks;
 
 namespace e_shift.Service
 {
-    public interface JobService
+    public interface ProductService
     {
-        Job Save(Job job);
-        Job Get(int id);
+        void Save(Product product);
+        void Update(Product product);
         void Delete(int id);
-        void Update(Job job);
-        List<JobsTableModel> GetAll();
+        Product Get(int id);
+        Product Find(string product);
+        List<Product> GetAll();
     }
 }

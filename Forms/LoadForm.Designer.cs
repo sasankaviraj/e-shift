@@ -34,6 +34,8 @@
             this.txtProduct = new System.Windows.Forms.TextBox();
             this.lblweight = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.cmbProducts = new System.Windows.Forms.ComboBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.btnAdd = new System.Windows.Forms.Button();
             this.tblLoads = new System.Windows.Forms.DataGridView();
             this.btnExit = new System.Windows.Forms.Button();
@@ -47,7 +49,7 @@
             this.btnSave.FlatAppearance.BorderSize = 0;
             this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSave.ForeColor = System.Drawing.Color.White;
-            this.btnSave.Location = new System.Drawing.Point(470, 88);
+            this.btnSave.Location = new System.Drawing.Point(470, 120);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(75, 20);
             this.btnSave.TabIndex = 16;
@@ -59,7 +61,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.ForeColor = System.Drawing.Color.White;
-            this.label4.Location = new System.Drawing.Point(19, 18);
+            this.label4.Location = new System.Drawing.Point(19, 12);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(44, 13);
             this.label4.TabIndex = 12;
@@ -67,14 +69,14 @@
             // 
             // txtWeight
             // 
-            this.txtWeight.Location = new System.Drawing.Point(108, 51);
+            this.txtWeight.Location = new System.Drawing.Point(108, 45);
             this.txtWeight.Name = "txtWeight";
             this.txtWeight.Size = new System.Drawing.Size(437, 20);
             this.txtWeight.TabIndex = 15;
             // 
             // txtProduct
             // 
-            this.txtProduct.Location = new System.Drawing.Point(110, 15);
+            this.txtProduct.Location = new System.Drawing.Point(110, 9);
             this.txtProduct.Name = "txtProduct";
             this.txtProduct.Size = new System.Drawing.Size(435, 20);
             this.txtProduct.TabIndex = 13;
@@ -83,7 +85,7 @@
             // 
             this.lblweight.AutoSize = true;
             this.lblweight.ForeColor = System.Drawing.Color.White;
-            this.lblweight.Location = new System.Drawing.Point(18, 58);
+            this.lblweight.Location = new System.Drawing.Point(18, 52);
             this.lblweight.Name = "lblweight";
             this.lblweight.Size = new System.Drawing.Size(81, 13);
             this.lblweight.TabIndex = 14;
@@ -91,16 +93,37 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.cmbProducts);
+            this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.btnAdd);
             this.panel1.Controls.Add(this.btnSave);
             this.panel1.Controls.Add(this.lblweight);
             this.panel1.Controls.Add(this.label4);
             this.panel1.Controls.Add(this.txtProduct);
             this.panel1.Controls.Add(this.txtWeight);
-            this.panel1.Location = new System.Drawing.Point(12, 43);
+            this.panel1.Location = new System.Drawing.Point(12, 37);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(560, 134);
+            this.panel1.Size = new System.Drawing.Size(560, 157);
             this.panel1.TabIndex = 17;
+            // 
+            // cmbProducts
+            // 
+            this.cmbProducts.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbProducts.FormattingEnabled = true;
+            this.cmbProducts.Location = new System.Drawing.Point(110, 83);
+            this.cmbProducts.Name = "cmbProducts";
+            this.cmbProducts.Size = new System.Drawing.Size(435, 21);
+            this.cmbProducts.TabIndex = 18;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.ForeColor = System.Drawing.Color.White;
+            this.label1.Location = new System.Drawing.Point(19, 86);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(71, 13);
+            this.label1.TabIndex = 19;
+            this.label1.Text = "Product Type";
             // 
             // btnAdd
             // 
@@ -108,7 +131,7 @@
             this.btnAdd.FlatAppearance.BorderSize = 0;
             this.btnAdd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAdd.ForeColor = System.Drawing.Color.White;
-            this.btnAdd.Location = new System.Drawing.Point(370, 88);
+            this.btnAdd.Location = new System.Drawing.Point(370, 120);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(75, 20);
             this.btnAdd.TabIndex = 17;
@@ -124,6 +147,7 @@
             this.tblLoads.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
             this.tblLoads.Size = new System.Drawing.Size(560, 149);
             this.tblLoads.TabIndex = 18;
+            this.tblLoads.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.tblLoads_CellContentClick);
             // 
             // btnExit
             // 
@@ -168,5 +192,7 @@
         private System.Windows.Forms.DataGridView tblLoads;
         private System.Windows.Forms.Button btnExit;
         private System.Windows.Forms.Button btnAdd;
+        private System.Windows.Forms.ComboBox cmbProducts;
+        private System.Windows.Forms.Label label1;
     }
 }

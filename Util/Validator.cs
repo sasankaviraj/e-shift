@@ -27,6 +27,16 @@ namespace e_shift.Util
             return input;
         }
 
+        public static string ValidateNumbersWithDecimal(string input,string type)
+        {
+            bool v = Regex.IsMatch(input, @"^[1-9]\d*(\.\d+)?$");
+            if (!v)
+            {
+                throw new Exception("Invalid "+type);
+            }
+            return input;
+        }
+
         public static string ValidateNIC(string input)
         {
             if (input.Length == 10)

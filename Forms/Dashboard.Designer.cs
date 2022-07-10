@@ -32,11 +32,11 @@
             this.panelNav = new System.Windows.Forms.Panel();
             this.btnSignOut = new System.Windows.Forms.Button();
             this.btnReports = new System.Windows.Forms.Button();
-            this.btnUsertypes = new System.Windows.Forms.Button();
+            this.btnProducttypes = new System.Windows.Forms.Button();
             this.btnLocations = new System.Windows.Forms.Button();
             this.btnUsers = new System.Windows.Forms.Button();
             this.btnJobs = new System.Windows.Forms.Button();
-            this.btnCustomers = new System.Windows.Forms.Button();
+            this.btnTransport = new System.Windows.Forms.Button();
             this.btnDashboard = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
@@ -56,11 +56,11 @@
             this.panel1.Controls.Add(this.panelNav);
             this.panel1.Controls.Add(this.btnSignOut);
             this.panel1.Controls.Add(this.btnReports);
-            this.panel1.Controls.Add(this.btnUsertypes);
+            this.panel1.Controls.Add(this.btnProducttypes);
             this.panel1.Controls.Add(this.btnLocations);
             this.panel1.Controls.Add(this.btnUsers);
             this.panel1.Controls.Add(this.btnJobs);
-            this.panel1.Controls.Add(this.btnCustomers);
+            this.panel1.Controls.Add(this.btnTransport);
             this.panel1.Controls.Add(this.btnDashboard);
             this.panel1.Controls.Add(this.panel2);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
@@ -110,22 +110,22 @@
             this.btnReports.Click += new System.EventHandler(this.btnReports_Click);
             this.btnReports.Leave += new System.EventHandler(this.btnReports_Leave);
             // 
-            // btnUsertypes
+            // btnProducttypes
             // 
-            this.btnUsertypes.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnUsertypes.FlatAppearance.BorderSize = 0;
-            this.btnUsertypes.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnUsertypes.Font = new System.Drawing.Font("Nirmala UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnUsertypes.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(126)))), ((int)(((byte)(249)))));
-            this.btnUsertypes.Location = new System.Drawing.Point(0, 354);
-            this.btnUsertypes.Name = "btnUsertypes";
-            this.btnUsertypes.Size = new System.Drawing.Size(186, 42);
-            this.btnUsertypes.TabIndex = 7;
-            this.btnUsertypes.Text = "Manage User Types";
-            this.btnUsertypes.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
-            this.btnUsertypes.UseVisualStyleBackColor = true;
-            this.btnUsertypes.Click += new System.EventHandler(this.btnUsertypes_Click);
-            this.btnUsertypes.Leave += new System.EventHandler(this.btnUsertypes_Leave);
+            this.btnProducttypes.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnProducttypes.FlatAppearance.BorderSize = 0;
+            this.btnProducttypes.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnProducttypes.Font = new System.Drawing.Font("Nirmala UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnProducttypes.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(126)))), ((int)(((byte)(249)))));
+            this.btnProducttypes.Location = new System.Drawing.Point(0, 354);
+            this.btnProducttypes.Name = "btnProducttypes";
+            this.btnProducttypes.Size = new System.Drawing.Size(186, 42);
+            this.btnProducttypes.TabIndex = 7;
+            this.btnProducttypes.Text = "Manage Product Types";
+            this.btnProducttypes.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
+            this.btnProducttypes.UseVisualStyleBackColor = true;
+            this.btnProducttypes.Click += new System.EventHandler(this.btnUsertypes_Click);
+            this.btnProducttypes.Leave += new System.EventHandler(this.btnUsertypes_Leave);
             // 
             // btnLocations
             // 
@@ -178,22 +178,22 @@
             this.btnJobs.Click += new System.EventHandler(this.btnJobs_Click);
             this.btnJobs.Leave += new System.EventHandler(this.btnJobs_Leave);
             // 
-            // btnCustomers
+            // btnTransport
             // 
-            this.btnCustomers.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnCustomers.FlatAppearance.BorderSize = 0;
-            this.btnCustomers.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCustomers.Font = new System.Drawing.Font("Nirmala UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCustomers.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(126)))), ((int)(((byte)(249)))));
-            this.btnCustomers.Location = new System.Drawing.Point(0, 186);
-            this.btnCustomers.Name = "btnCustomers";
-            this.btnCustomers.Size = new System.Drawing.Size(186, 42);
-            this.btnCustomers.TabIndex = 3;
-            this.btnCustomers.Text = "Manage Customers";
-            this.btnCustomers.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
-            this.btnCustomers.UseVisualStyleBackColor = true;
-            this.btnCustomers.Click += new System.EventHandler(this.btnCustomers_Click);
-            this.btnCustomers.Leave += new System.EventHandler(this.btnCustomers_Leave);
+            this.btnTransport.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnTransport.FlatAppearance.BorderSize = 0;
+            this.btnTransport.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnTransport.Font = new System.Drawing.Font("Nirmala UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnTransport.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(126)))), ((int)(((byte)(249)))));
+            this.btnTransport.Location = new System.Drawing.Point(0, 186);
+            this.btnTransport.Name = "btnTransport";
+            this.btnTransport.Size = new System.Drawing.Size(186, 42);
+            this.btnTransport.TabIndex = 3;
+            this.btnTransport.Text = "Manage Transport";
+            this.btnTransport.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
+            this.btnTransport.UseVisualStyleBackColor = true;
+            this.btnTransport.Click += new System.EventHandler(this.btnCustomers_Click);
+            this.btnTransport.Leave += new System.EventHandler(this.btnCustomers_Leave);
             // 
             // btnDashboard
             // 
@@ -319,11 +319,11 @@
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Button btnSignOut;
         private System.Windows.Forms.Button btnReports;
-        private System.Windows.Forms.Button btnUsertypes;
+        private System.Windows.Forms.Button btnProducttypes;
         private System.Windows.Forms.Button btnLocations;
         private System.Windows.Forms.Button btnUsers;
         private System.Windows.Forms.Button btnJobs;
-        private System.Windows.Forms.Button btnCustomers;
+        private System.Windows.Forms.Button btnTransport;
         private System.Windows.Forms.Panel panelNav;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtSearchWithJobNo;

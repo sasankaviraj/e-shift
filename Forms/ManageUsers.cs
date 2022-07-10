@@ -17,7 +17,6 @@ namespace e_shift.Forms
 {
     public partial class ManageUsers : Form
     {
-        private UserTypeService userTypeService;
         private UserService userService;
         private List<UserType> userTypes = new List<UserType>();
         private List<UserTableModel> users = new List<UserTableModel>();
@@ -28,20 +27,11 @@ namespace e_shift.Forms
         {
             InitializeComponent();
             userTypeMap = new Dictionary<string, int>();
-            userTypeService = ServiceFactory.getInstance().getFactory(ServiceFactory.Instance.USER_TYPE);
             userService = ServiceFactory.getInstance().getFactory(ServiceFactory.Instance.USER);
-            FetchUserTypes();
             FetchAllUsers();
             SetTable();
         }
 
-        private void FetchUserTypes() {
-            userTypes = userTypeService.GetAll();
-            userTypes.ForEach(value => {
-                userTypeMap.Add(value.Type, value.Id);
-                cmbUserTypes.Items.Add(value.Type);
-            });
-        }
 
         private void FetchAllUsers() {
             users = userService.GetAll();
@@ -70,12 +60,13 @@ namespace e_shift.Forms
                 if (setUpdate)
                 {
                     var user = new User();
-                    user.Name = Validator.ValidateField(txtName.Text,"Name");
+                    user.FirstName = Validator.ValidateField(txtFirstName.Text,"First Name");
+                    user.LastName = Validator.ValidateField(txtLastName.Text, "Last Name");
+                    user.NIC = Validator.ValidateNIC(txtNIC.Text);
                     user.Id = Convert.ToInt32(row.Cells[2].Value);
                     user.Address = txtAddress.Text;
                     user.ContactNumber = Validator.ValidateContactNumber(txtContactNo.Text);
-                    UserType userType = userTypeService.Get(userTypeMap[cmbUserTypes.Text]);
-                    user.UserType = userType;
+                    user.UserType = "ADMIN";
                     userService.Update(user);
                     FetchAllUsers();
                     MessageBox.Show("User Details Updated Successfully");
@@ -84,14 +75,15 @@ namespace e_shift.Forms
                 else
                 {
                     var user = new User();
-                    user.Name = Validator.ValidateField(txtName.Text,"Name");
+                    user.FirstName = Validator.ValidateField(txtFirstName.Text, "First Name");
+                    user.LastName = Validator.ValidateField(txtLastName.Text, "Last Name");
+                    user.NIC = Validator.ValidateNIC(txtNIC.Text);
                     user.UserName = txtUsername.Text;
                     var encryptedPassword = EncryptDecryptPassword.EncryptPlainTextToCipherText(txtPassword.Text);
                     user.Password = encryptedPassword;
                     user.Address = txtAddress.Text;
                     user.ContactNumber = Validator.ValidateContactNumber(txtContactNo.Text);
-                    UserType userType = userTypeService.Get(userTypeMap[cmbUserTypes.Text]);
-                    user.UserType = userType;
+                    user.UserType = "ADMIN";
                     userService.Save(user);
                     FetchAllUsers();
                     MessageBox.Show("User Saved Successfully");
@@ -114,10 +106,11 @@ namespace e_shift.Forms
                 txtUsername.Enabled = false;
                 txtPassword.Enabled = false;
 
-                txtName.Text = row.Cells[3].Value.ToString();
-                txtAddress.Text = row.Cells[4].Value.ToString();
-                txtContactNo.Text = row.Cells[5].Value.ToString();
-                cmbUserTypes.Text = row.Cells[6].Value.ToString();
+                txtFirstName.Text = row.Cells[3].Value.ToString();
+                txtLastName.Text = row.Cells[4].Value.ToString();
+                txtNIC.Text = row.Cells[5].Value.ToString();
+                txtAddress.Text = row.Cells[6].Value.ToString();
+                txtContactNo.Text = row.Cells[7].Value.ToString();
             }
             if (e.ColumnIndex == 1) {
                 DialogResult dialogResult = MessageBox.Show("Are You Sure?", "Delete User", MessageBoxButtons.YesNo);
@@ -141,12 +134,14 @@ namespace e_shift.Forms
         private void clearFields() {
             txtUsername.Enabled = true;
             txtPassword.Enabled = true;
-            cmbUserTypes.ResetText();
-            txtName.Clear();
+            txtFirstName.Clear();
+            txtLastName.Clear();
+            txtNIC.Clear();
             txtUsername.Clear();
             txtPassword.Clear();
             txtAddress.Clear();
             txtContactNo.Clear();
+            setUpdate = false;
         }
 
         private void btnClear_Click(object sender, EventArgs e)

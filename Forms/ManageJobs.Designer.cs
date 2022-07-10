@@ -38,11 +38,11 @@
             this.label3 = new System.Windows.Forms.Label();
             this.cmbPickups = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.cmbCustomers = new System.Windows.Forms.ComboBox();
+            this.cmbTransport = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.tblJobs = new System.Windows.Forms.DataGridView();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tblJobs)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -56,7 +56,7 @@
             this.panel1.Controls.Add(this.label3);
             this.panel1.Controls.Add(this.cmbPickups);
             this.panel1.Controls.Add(this.label2);
-            this.panel1.Controls.Add(this.cmbCustomers);
+            this.panel1.Controls.Add(this.cmbTransport);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Location = new System.Drawing.Point(12, 13);
             this.panel1.Name = "panel1";
@@ -149,14 +149,14 @@
             this.label2.TabIndex = 14;
             this.label2.Text = "Pickup Location";
             // 
-            // cmbCustomers
+            // cmbTransport
             // 
-            this.cmbCustomers.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbCustomers.FormattingEnabled = true;
-            this.cmbCustomers.Location = new System.Drawing.Point(117, 17);
-            this.cmbCustomers.Name = "cmbCustomers";
-            this.cmbCustomers.Size = new System.Drawing.Size(620, 21);
-            this.cmbCustomers.TabIndex = 11;
+            this.cmbTransport.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbTransport.FormattingEnabled = true;
+            this.cmbTransport.Location = new System.Drawing.Point(117, 17);
+            this.cmbTransport.Name = "cmbTransport";
+            this.cmbTransport.Size = new System.Drawing.Size(620, 21);
+            this.cmbTransport.TabIndex = 11;
             // 
             // label1
             // 
@@ -164,16 +164,19 @@
             this.label1.ForeColor = System.Drawing.Color.White;
             this.label1.Location = new System.Drawing.Point(26, 20);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(84, 13);
+            this.label1.Size = new System.Drawing.Size(85, 13);
             this.label1.TabIndex = 12;
-            this.label1.Text = "Select Customer";
+            this.label1.Text = "Select Transport";
             // 
-            // dataGridView1
+            // tblJobs
             // 
-            this.dataGridView1.Location = new System.Drawing.Point(13, 268);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(759, 281);
-            this.dataGridView1.TabIndex = 1;
+            this.tblJobs.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.ColumnHeader;
+            this.tblJobs.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
+            this.tblJobs.Location = new System.Drawing.Point(13, 268);
+            this.tblJobs.Name = "tblJobs";
+            this.tblJobs.Size = new System.Drawing.Size(759, 281);
+            this.tblJobs.TabIndex = 1;
+            this.tblJobs.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.tblJobs_CellContentClick);
             // 
             // ManageJobs
             // 
@@ -181,14 +184,14 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(51)))), ((int)(((byte)(73)))));
             this.ClientSize = new System.Drawing.Size(784, 561);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.tblJobs);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "ManageJobs";
             this.Text = "ManageJobs";
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tblJobs)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -196,7 +199,7 @@
         #endregion
 
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.ComboBox cmbCustomers;
+        private System.Windows.Forms.ComboBox cmbTransport;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ComboBox cmbDelivery;
         private System.Windows.Forms.Label label3;
@@ -207,6 +210,6 @@
         private System.Windows.Forms.TextBox txtFromAddress;
         private System.Windows.Forms.Label lblName;
         private System.Windows.Forms.Button btnAddLoad;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView tblJobs;
     }
 }

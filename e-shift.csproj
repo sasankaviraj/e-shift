@@ -64,6 +64,8 @@
     <Compile Include="Data\Job.cs" />
     <Compile Include="Data\Load.cs" />
     <Compile Include="Data\PickupLocation.cs" />
+    <Compile Include="Data\Product.cs" />
+    <Compile Include="Data\Transport.cs" />
     <Compile Include="Data\User.cs" />
     <Compile Include="Data\UserType.cs" />
     <Compile Include="Factory\ServiceFactory.cs" />
@@ -121,11 +123,24 @@
     <Compile Include="Forms\ManageUsers.Designer.cs">
       <DependentUpon>ManageUsers.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202207071457088_Initial.cs" />
-    <Compile Include="Migrations\202207071457088_Initial.designer.cs">
-      <DependentUpon>202207071457088_Initial.cs</DependentUpon>
+    <Compile Include="Forms\ProductForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\ProductForm.Designer.cs">
+      <DependentUpon>ProductForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\TransportForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\TransportForm.Designer.cs">
+      <DependentUpon>TransportForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202207101656423_Initial.cs" />
+    <Compile Include="Migrations\202207101656423_Initial.designer.cs">
+      <DependentUpon>202207101656423_Initial.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Model\JobsTableModel.cs" />
     <Compile Include="Model\UserTableModel.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -141,11 +156,15 @@
     <Compile Include="Service\Impl\JobServiceImpl.cs" />
     <Compile Include="Service\Impl\LoadServiceImpl.cs" />
     <Compile Include="Service\Impl\PickupLocationServiceImpl.cs" />
+    <Compile Include="Service\Impl\ProductServiceImpl.cs" />
+    <Compile Include="Service\Impl\TransportServiceImpl.cs" />
     <Compile Include="Service\Impl\UserServiceimpl.cs" />
     <Compile Include="Service\Impl\UserTypeServiceImpl.cs" />
     <Compile Include="Service\JobService.cs" />
     <Compile Include="Service\LoadService.cs" />
     <Compile Include="Service\PickupLocationService.cs" />
+    <Compile Include="Service\ProductService.cs" />
+    <Compile Include="Service\TransportService.cs" />
     <Compile Include="Service\UserService.cs" />
     <Compile Include="Service\UserTypeService.cs" />
     <Compile Include="Util\EncryptDecryptPassword.cs" />
@@ -178,8 +197,14 @@
     <EmbeddedResource Include="Forms\ManageUsers.resx">
       <DependentUpon>ManageUsers.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202207071457088_Initial.resx">
-      <DependentUpon>202207071457088_Initial.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\ProductForm.resx">
+      <DependentUpon>ProductForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\TransportForm.resx">
+      <DependentUpon>TransportForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202207101656423_Initial.resx">
+      <DependentUpon>202207101656423_Initial.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

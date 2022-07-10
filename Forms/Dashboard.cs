@@ -64,11 +64,11 @@ namespace e_shift.Forms
 
         private void btnCustomers_Click(object sender, EventArgs e)
         {
-            loadForm(new CustomerForm());
-            panelNav.Height = btnCustomers.Height;
-            panelNav.Top = btnCustomers.Top;
-            panelNav.Left = btnCustomers.Left;
-            btnCustomers.BackColor = Color.FromArgb(46, 51, 73);
+            loadForm(new TransportForm());
+            panelNav.Height = btnTransport.Height;
+            panelNav.Top = btnTransport.Top;
+            panelNav.Left = btnTransport.Left;
+            btnTransport.BackColor = Color.FromArgb(46, 51, 73);
         }
 
         private void btnJobs_Click(object sender, EventArgs e)
@@ -100,11 +100,11 @@ namespace e_shift.Forms
 
         private void btnUsertypes_Click(object sender, EventArgs e)
         {
-            loadForm(new AddUserType());
-            panelNav.Height = btnUsertypes.Height;
-            panelNav.Top = btnUsertypes.Top;
-            panelNav.Left = btnUsertypes.Left;
-            btnUsertypes.BackColor = Color.FromArgb(46, 51, 73);
+            loadForm(new ProductForm());
+            panelNav.Height = btnProducttypes.Height;
+            panelNav.Top = btnProducttypes.Top;
+            panelNav.Left = btnProducttypes.Left;
+            btnProducttypes.BackColor = Color.FromArgb(46, 51, 73);
 
         }
 
@@ -123,7 +123,7 @@ namespace e_shift.Forms
 
         private void btnCustomers_Leave(object sender, EventArgs e)
         {
-            btnCustomers.BackColor = Color.FromArgb(24, 30, 54);
+            btnTransport.BackColor = Color.FromArgb(24, 30, 54);
         }
 
         private void btnJobs_Leave(object sender, EventArgs e)
@@ -143,7 +143,7 @@ namespace e_shift.Forms
 
         private void btnUsertypes_Leave(object sender, EventArgs e)
         {
-            btnUsertypes.BackColor = Color.FromArgb(24, 30, 54);
+            btnProducttypes.BackColor = Color.FromArgb(24, 30, 54);
         }
 
         private void btnReports_Leave(object sender, EventArgs e)

@@ -14,6 +14,7 @@ namespace e_shift.Data
         public string Product { get; set; }
         [Required]
         public decimal Weight { get; set; }
+        public Product ProductType { get; set; }
         [Required]
         public Job Job { get; set; }
     }

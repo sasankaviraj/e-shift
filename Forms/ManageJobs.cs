@@ -1,6 +1,8 @@
 ﻿using e_shift.Data;
 using e_shift.Factory;
+using e_shift.Model;
 using e_shift.Service;
+using e_shift.Util;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -16,35 +18,43 @@ namespace e_shift.Forms
     public partial class ManageJobs : Form
     {
         private DataGridViewRow row;
-        private List<Job> jobs = new List<Job>();
-        private List<Customer> customers = new List<Customer>();
+        private List<JobsTableModel> jobs = new List<JobsTableModel>();
+        private List<Transport> transports = new List<Transport>();
         private List<PickupLocation> pickupLocations = new List<PickupLocation>();
         private List<DeliveryLocation> deliveryLocations = new List<DeliveryLocation>();
-        private Dictionary<string, int> customerMap = new Dictionary<string, int>();
+        private Dictionary<string, int> transportMap = new Dictionary<string, int>();
         private Dictionary<string, int> pickupLocationMap = new Dictionary<string, int>();
         private Dictionary<string, int> deliveryLocationMap = new Dictionary<string, int>();
         private JobService jobService;
-        private CustomerService customerService;
+        private TransportService transportService;
         private PickupLocationService pickupLocationService;
         private DeliveryLocationService deliveryLocationService;
         public ManageJobs()
         {
             InitializeComponent();
             jobService = ServiceFactory.getInstance().getFactory(ServiceFactory.Instance.JOB);
-            customerService = ServiceFactory.getInstance().getFactory(ServiceFactory.Instance.CUSTOMER);
+            transportService = ServiceFactory.getInstance().getFactory(ServiceFactory.Instance.TRANSPORT);
             pickupLocationService = ServiceFactory.getInstance().getFactory(ServiceFactory.Instance.PICKUP_LOCATION);
             deliveryLocationService = ServiceFactory.getInstance().getFactory(ServiceFactory.Instance.DELIVERY_LOCATION);
+            FetchAllJobs();
             FetchCustomers();
             FetchPickups();
             FetchDeliveries();
+            SetTable();
+        }
+
+        private void FetchAllJobs()
+        {
+            jobs = jobService.GetAll();
+            tblJobs.DataSource = jobs;
         }
 
         private void FetchCustomers()
         {
-            customers = customerService.GetAll();
-            customers.ForEach(value => {
-                customerMap.Add(value.FirstName, value.Id);
-                cmbCustomers.Items.Add(value.FirstName);
+            transports = transportService.GetAll();
+            transports.ForEach(value => {
+                transportMap.Add(value.Vehicle, value.Id);
+                cmbTransport.Items.Add(value.Vehicle);
             });
         }
 
@@ -71,16 +81,72 @@ namespace e_shift.Forms
             Job job = new Job();
             job.FromAddress = txtFromAddress.Text;
             job.ToAddress = txtDeliveryAddress.Text;
-            Customer customer = customerService.Get(customerMap[cmbCustomers.Text]); ;
+            
+            Transport transport = transportService.Get(transportMap[cmbTransport.Text]); ;
             PickupLocation pickupLocation = pickupLocationService.Get(pickupLocationMap[cmbPickups.Text]);
             DeliveryLocation deliveryLocation = deliveryLocationService.Get(deliveryLocationMap[cmbDelivery.Text]);
 
-            job.Customer = customer;
+            job.Transport = transport;
             job.PickupLocation = pickupLocation;
             job.DeliveryLocation = deliveryLocation;
 
             LoadForm loadForm = new LoadForm(job);
             loadForm.Show();
+        }
+
+        private void SetTable()
+        {
+            DataGridViewButtonColumn buttonColumnEdit = new DataGridViewButtonColumn
+            {
+                Text = "Approve",
+                UseColumnTextForButtonValue = true,
+            };
+            DataGridViewButtonColumn buttonColumnDelete = new DataGridViewButtonColumn
+            {
+                Text = "Delete",
+                UseColumnTextForButtonValue = true,
+            };
+            tblJobs.Columns.Insert(10, buttonColumnEdit);
+            tblJobs.Columns.Insert(11, buttonColumnDelete);
+        }
+
+        private void tblJobs_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            clearFields();
+            row = tblJobs.Rows[e.RowIndex];
+            row.Selected = true;
+            Console.WriteLine(e.ColumnIndex);
+            if (e.ColumnIndex == 0)
+            {
+                
+            }
+            if (e.ColumnIndex == 1)
+            {
+                DialogResult dialogResult = MessageBox.Show("Are You Sure?", "Delete User", MessageBoxButtons.YesNo);
+                if (dialogResult == DialogResult.Yes)
+                {
+                    try
+                    {
+                        //userService.Delete(Convert.ToInt32(row.Cells[2].Value));
+                        //FetchAllUsers();
+                        MessageBox.Show("User Deleted Successfully");
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message);
+                    }
+                }
+
+
+            }
+        }
+
+        private void clearFields() {
+            txtDeliveryAddress.Clear();
+            txtFromAddress.Clear();
+            cmbTransport.ResetText();
+            cmbDelivery.ResetText();
+            cmbPickups.ResetText();
         }
     }
 }
