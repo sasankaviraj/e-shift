@@ -38,6 +38,7 @@ namespace e_shift.Forms
             try {
                 var pickupLocation = new PickupLocation();
                 pickupLocation.Location = Validator.ValidateField(txtPickup.Text, "Pickup Location");
+                pickupLocation.UnitsFromColombo = Convert.ToInt32(Validator.ValidateNumbersOnly(txtUnitsPk.Text,"Units"));
                 pickupLocationService.Save(pickupLocation);
                 FetchAllPickups();
                 MessageBox.Show("Pickup Location Saved Successfully");
@@ -92,6 +93,7 @@ namespace e_shift.Forms
             {
                 var deliveryLocation = new DeliveryLocation();
                 deliveryLocation.Location = Validator.ValidateField(txtDelivery.Text, "Delivery Location");
+                deliveryLocation.UnitsFromColombo = Convert.ToInt32(Validator.ValidateNumbersOnly(txtUnitsDl.Text, "Units"));
                 deliveryLocationService.Save(deliveryLocation);
                 FetchAllDeliveries();
                 MessageBox.Show("Delivery Location Saved Successfully");

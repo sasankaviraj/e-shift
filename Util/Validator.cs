@@ -62,5 +62,15 @@ namespace e_shift.Util
             }
 
         }
+
+        public static string ValidateNumbersOnly(string input, string type)
+        {
+            bool v = Regex.IsMatch(input, @"^[0-9]*$");
+            if (!v)
+            {
+                throw new Exception("Invalid " + type);
+            }
+            return input;
+        }
     }
 }

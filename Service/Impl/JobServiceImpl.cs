@@ -29,7 +29,14 @@ namespace e_shift.Service.Impl
 
         public Job Get(int id)
         {
-            throw new NotImplementedException();
+            try
+            {
+                return dbContext.Jobs.Find(id);
+            }
+            catch (Exception e)
+            {
+                throw new Exception("Failed To Find Job " + e.Message);
+            }
         }
 
         public List<JobsTableModel> GetAll()
@@ -54,6 +61,30 @@ namespace e_shift.Service.Impl
             catch (Exception)
             {
                 throw new Exception("Failed To Find Users");
+            }
+        }
+
+        public List<JobsTableModel> GetByUserId(int id)
+        {
+            try
+            {
+                return dbContext.Jobs.Where(j=> j.User.Id == id).Select(res=> new JobsTableModel()
+                {
+                    Id = res.Id,
+                    Transport = res.Transport.Vehicle,
+                    Pickup = res.PickupLocation.Location,
+                    Delivery = res.DeliveryLocation.Location,
+                    ContactNumber = res.User.ContactNumber,
+                    User = res.User.FirstName + " " + res.User.LastName,
+                    Approval = res.IsApproved,
+                    IsDelivered = res.IsDelivered,
+                    IsSuccess = res.IsSuccess,
+                    CreatedDate = res.CreatedAt.ToString()
+                }).ToList<JobsTableModel>();
+            }
+            catch (Exception e)
+            {
+                throw new Exception("Failed To Find Job " + e.Message);
             }
         }
 

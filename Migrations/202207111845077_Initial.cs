@@ -30,6 +30,7 @@
                     {
                         Id = c.Int(nullable: false, identity: true),
                         Location = c.String(nullable: false),
+                        UnitsFromColombo = c.Int(nullable: false),
                         IsDeleted = c.Boolean(nullable: false),
                         CreatedAt = c.DateTime(nullable: false),
                         ModifiedAt = c.DateTime(),
@@ -106,6 +107,7 @@
                     {
                         Id = c.Int(nullable: false, identity: true),
                         Location = c.String(nullable: false),
+                        UnitsFromColombo = c.Int(nullable: false),
                         IsDeleted = c.Boolean(nullable: false),
                         CreatedAt = c.DateTime(nullable: false),
                         ModifiedAt = c.DateTime(),

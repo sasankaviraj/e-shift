@@ -12,5 +12,7 @@ namespace e_shift.Data
         public int Id { get; set; }
         [Required]
         public string Location { get; set; }
+        [Required]
+        public int UnitsFromColombo { get; set; }
     }
 }

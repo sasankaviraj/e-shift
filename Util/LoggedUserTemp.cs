@@ -8,7 +8,7 @@ namespace e_shift.Util
 {
     public class LoggedUserTemp
     {
-        public static string LoggedUserTempName;
-        public static string LoggedUserId;
+        public static string LoggedUserTempName = "";
+        public static string LoggedUserId = "";
     }
 }

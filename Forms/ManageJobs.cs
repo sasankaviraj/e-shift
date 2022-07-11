@@ -37,7 +37,7 @@ namespace e_shift.Forms
             pickupLocationService = ServiceFactory.getInstance().getFactory(ServiceFactory.Instance.PICKUP_LOCATION);
             deliveryLocationService = ServiceFactory.getInstance().getFactory(ServiceFactory.Instance.DELIVERY_LOCATION);
             FetchAllJobs();
-            FetchCustomers();
+            FetchTransport();
             FetchPickups();
             FetchDeliveries();
             SetTable();
@@ -45,11 +45,14 @@ namespace e_shift.Forms
 
         private void FetchAllJobs()
         {
-            jobs = jobService.GetAll();
+            if (!LoggedUserTemp.LoggedUserId.Equals("")) {
+                jobs = jobService.GetByUserId(Convert.ToInt32(LoggedUserTemp.LoggedUserId));
+            };
             tblJobs.DataSource = jobs;
+            
         }
 
-        private void FetchCustomers()
+        private void FetchTransport()
         {
             transports = transportService.GetAll();
             transports.ForEach(value => {
@@ -78,20 +81,26 @@ namespace e_shift.Forms
 
         private void btnAddLoad_Click(object sender, EventArgs e)
         {
-            Job job = new Job();
-            job.FromAddress = txtFromAddress.Text;
-            job.ToAddress = txtDeliveryAddress.Text;
-            
-            Transport transport = transportService.Get(transportMap[cmbTransport.Text]); ;
-            PickupLocation pickupLocation = pickupLocationService.Get(pickupLocationMap[cmbPickups.Text]);
-            DeliveryLocation deliveryLocation = deliveryLocationService.Get(deliveryLocationMap[cmbDelivery.Text]);
+            if (!LoggedUserTemp.LoggedUserId.Equals(""))
+            {
+                Job job = new Job();
+                job.FromAddress = txtFromAddress.Text;
+                job.ToAddress = txtDeliveryAddress.Text;
 
-            job.Transport = transport;
-            job.PickupLocation = pickupLocation;
-            job.DeliveryLocation = deliveryLocation;
+                Transport transport = transportService.Get(transportMap[cmbTransport.Text]); ;
+                PickupLocation pickupLocation = pickupLocationService.Get(pickupLocationMap[cmbPickups.Text]);
+                DeliveryLocation deliveryLocation = deliveryLocationService.Get(deliveryLocationMap[cmbDelivery.Text]);
 
-            LoadForm loadForm = new LoadForm(job);
-            loadForm.Show();
+                job.Transport = transport;
+                job.PickupLocation = pickupLocation;
+                job.DeliveryLocation = deliveryLocation;
+
+                LoadForm loadForm = new LoadForm(job);
+                loadForm.Show();
+            }
+            else {
+                MessageBox.Show("Login To Place A Job");
+            }
         }
 
         private void SetTable()

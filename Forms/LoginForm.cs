@@ -37,9 +37,18 @@ namespace e_shift.Forms
                 user = userService.Find(user);
                 LoggedUserTemp.LoggedUserTempName = user.UserName;
                 LoggedUserTemp.LoggedUserId = user.Id.ToString();
-                Dashboard dashboard = new Dashboard();
-                dashboard.Show();
-                this.Hide();
+                if (user.UserType.Equals("ADMIN"))
+                {
+                    Dashboard dashboard = new Dashboard();
+                    dashboard.Show();
+                    this.Hide();
+                }
+                else {
+                    CuistomerDashboard dashboard = new CuistomerDashboard();
+                    dashboard.Show();
+                    this.Hide();
+                }
+                
             } catch (Exception ex) {
                 MessageBox.Show(ex.Message);
             }

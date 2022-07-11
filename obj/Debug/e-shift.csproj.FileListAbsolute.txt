@@ -24,4 +24,5 @@ C:\London Metropolitan University\AD\coursework 1\e-shift\e-shift\obj\Debug\e_sh
 C:\London Metropolitan University\AD\coursework 1\e-shift\e-shift\obj\Debug\e_shift.Forms.LoadForm.resources
 C:\London Metropolitan University\AD\coursework 1\e-shift\e-shift\obj\Debug\e_shift.Forms.ProductForm.resources
 C:\London Metropolitan University\AD\coursework 1\e-shift\e-shift\obj\Debug\e_shift.Forms.TransportForm.resources
+C:\London Metropolitan University\AD\coursework 1\e-shift\e-shift\obj\Debug\e_shift.Forms.CuistomerDashboard.resources
 C:\London Metropolitan University\AD\coursework 1\e-shift\e-shift\obj\Debug\e_shift.Migrations.Initial.resources
