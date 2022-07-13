@@ -45,8 +45,13 @@ namespace e_shift.Forms
 
         private void FetchAllJobs()
         {
-            if (!LoggedUserTemp.LoggedUserId.Equals("")) {
-                jobs = jobService.GetByUserId(Convert.ToInt32(LoggedUserTemp.LoggedUserId));
+            if (LoggedUserTemp.LoggedUser.UserType!=null) {
+                if (LoggedUserTemp.LoggedUser.UserType.Equals("ADMIN")) {
+                    jobs = jobService.GetAll();
+                }
+                if (LoggedUserTemp.LoggedUser.UserType.Equals("CUSTOMER")) {
+                    jobs = jobService.GetByUserId(Convert.ToInt32(LoggedUserTemp.LoggedUser.Id));
+                }
             };
             tblJobs.DataSource = jobs;
             
@@ -81,42 +86,53 @@ namespace e_shift.Forms
 
         private void btnAddLoad_Click(object sender, EventArgs e)
         {
-            if (!LoggedUserTemp.LoggedUserId.Equals(""))
-            {
-                Job job = new Job();
-                job.FromAddress = txtFromAddress.Text;
-                job.ToAddress = txtDeliveryAddress.Text;
+            try {
+                if (!LoggedUserTemp.LoggedUser.Id.Equals(0))
+                {
+                    Job job = new Job();
+                    job.FromAddress = txtFromAddress.Text;
+                    job.ToAddress = txtDeliveryAddress.Text;
 
-                Transport transport = transportService.Get(transportMap[cmbTransport.Text]); ;
-                PickupLocation pickupLocation = pickupLocationService.Get(pickupLocationMap[cmbPickups.Text]);
-                DeliveryLocation deliveryLocation = deliveryLocationService.Get(deliveryLocationMap[cmbDelivery.Text]);
+                    Transport transport = transportService.Get(transportMap[cmbTransport.Text]); ;
+                    PickupLocation pickupLocation = pickupLocationService.Get(pickupLocationMap[cmbPickups.Text]);
+                    DeliveryLocation deliveryLocation = deliveryLocationService.Get(deliveryLocationMap[cmbDelivery.Text]);
 
-                job.Transport = transport;
-                job.PickupLocation = pickupLocation;
-                job.DeliveryLocation = deliveryLocation;
+                    job.Transport = transport;
+                    job.PickupLocation = pickupLocation;
+                    job.DeliveryLocation = deliveryLocation;
 
-                LoadForm loadForm = new LoadForm(job);
-                loadForm.Show();
+                    LoadForm loadForm = new LoadForm(job);
+                    loadForm.Show();
+                }
+                else
+                {
+                    MessageBox.Show("Login To Place A Job");
+                }
             }
-            else {
-                MessageBox.Show("Login To Place A Job");
+            catch (Exception ex) {
+                MessageBox.Show("Error Occured");
             }
+            
         }
 
         private void SetTable()
         {
-            DataGridViewButtonColumn buttonColumnEdit = new DataGridViewButtonColumn
+            if (LoggedUserTemp.LoggedUser.UserType != null && LoggedUserTemp.LoggedUser.UserType.Equals("ADMIN"))
             {
-                Text = "Approve",
-                UseColumnTextForButtonValue = true,
-            };
-            DataGridViewButtonColumn buttonColumnDelete = new DataGridViewButtonColumn
-            {
-                Text = "Delete",
-                UseColumnTextForButtonValue = true,
-            };
-            tblJobs.Columns.Insert(10, buttonColumnEdit);
-            tblJobs.Columns.Insert(11, buttonColumnDelete);
+                DataGridViewButtonColumn buttonColumnEdit = new DataGridViewButtonColumn
+                {
+                    Text = "Approve",
+                    UseColumnTextForButtonValue = true,
+                };
+                DataGridViewButtonColumn buttonColumnDelete = new DataGridViewButtonColumn
+                {
+                    Text = "Delete",
+                    UseColumnTextForButtonValue = true,
+                };
+                tblJobs.Columns.Insert(10, buttonColumnEdit);
+                tblJobs.Columns.Insert(11, buttonColumnDelete);
+            }
+
         }
 
         private void tblJobs_CellContentClick(object sender, DataGridViewCellEventArgs e)

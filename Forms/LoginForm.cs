@@ -35,8 +35,7 @@ namespace e_shift.Forms
             user.Password = txtPassword.Text;
             try {
                 user = userService.Find(user);
-                LoggedUserTemp.LoggedUserTempName = user.UserName;
-                LoggedUserTemp.LoggedUserId = user.Id.ToString();
+                LoggedUserTemp.LoggedUser = user;
                 if (user.UserType.Equals("ADMIN"))
                 {
                     Dashboard dashboard = new Dashboard();
@@ -52,6 +51,13 @@ namespace e_shift.Forms
             } catch (Exception ex) {
                 MessageBox.Show(ex.Message);
             }
+        }
+
+        private void btnSignUp_Click(object sender, EventArgs e)
+        {
+            ManageUsers manageUsers = new ManageUsers(true);
+            manageUsers.Show();
+            this.Hide();
         }
     }
 }

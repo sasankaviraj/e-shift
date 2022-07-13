@@ -16,7 +16,7 @@ namespace e_shift.Forms
         public CuistomerDashboard()
         {
             InitializeComponent();
-            lblUserName.Text = (LoggedUserTemp.LoggedUserTempName.Equals("")) ? "Click To Sign In" : LoggedUserTemp.LoggedUserTempName;
+            lblUserName.Text = (LoggedUserTemp.LoggedUser.UserName == null) ? "Click To Sign In" : LoggedUserTemp.LoggedUser.UserName;
         }
 
         public void loadForm(object Form)
@@ -35,7 +35,9 @@ namespace e_shift.Forms
         }
         private void btnSignOut_Click(object sender, EventArgs e)
         {
-
+            LoginForm loginForm = new LoginForm();
+            loginForm.Show();
+            this.Hide();
         }
 
         private void CuistomerDashboard_Load(object sender, EventArgs e)
@@ -50,11 +52,16 @@ namespace e_shift.Forms
 
         private void lblUserName_Click(object sender, EventArgs e)
         {
-            if (LoggedUserTemp.LoggedUserId.Equals("")) {
+            if (LoggedUserTemp.LoggedUser.UserName == null) {
                 LoginForm loginForm = new LoginForm();
                 loginForm.Show();
                 this.Hide();
             }
+        }
+
+        private void btnDashboard_Click(object sender, EventArgs e)
+        {
+            loadForm(new ManageJobs());
         }
     }
 }

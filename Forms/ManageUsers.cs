@@ -23,8 +23,10 @@ namespace e_shift.Forms
         private Dictionary<string, int> userTypeMap;
         private bool setUpdate = false;
         private DataGridViewRow row;
-        public ManageUsers()
+        private bool isCustomerReg;
+        public ManageUsers(bool isCustomerReg)
         {
+            this.isCustomerReg = isCustomerReg;
             InitializeComponent();
             userTypeMap = new Dictionary<string, int>();
             userService = ServiceFactory.getInstance().getFactory(ServiceFactory.Instance.USER);
@@ -83,8 +85,13 @@ namespace e_shift.Forms
                     user.Password = encryptedPassword;
                     user.Address = txtAddress.Text;
                     user.ContactNumber = Validator.ValidateContactNumber(txtContactNo.Text);
-                    user.UserType = "ADMIN";
+                    user.UserType = isCustomerReg ? "CUSTOMER":"ADMIN";
                     userService.Save(user);
+                    if (isCustomerReg) {
+                        this.Hide();
+                        LoginForm loginForm = new LoginForm();
+                        loginForm.Show();
+                    }
                     FetchAllUsers();
                     MessageBox.Show("User Saved Successfully");
                 }

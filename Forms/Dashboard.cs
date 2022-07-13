@@ -32,7 +32,7 @@ namespace e_shift.Forms
             panelNav.Top = btnDashboard.Top;
             panelNav.Left = btnDashboard.Left;
             btnDashboard.BackColor = Color.FromArgb(46, 51, 73);
-            lblUserName.Text = LoggedUserTemp.LoggedUserTempName;
+            lblUserName.Text = LoggedUserTemp.LoggedUser.UserName;
         }
 
         public void loadForm(object Form) {
@@ -82,7 +82,7 @@ namespace e_shift.Forms
 
         private void btnUsers_Click(object sender, EventArgs e)
         {
-            loadForm(new ManageUsers());
+            loadForm(new ManageUsers(false));
             panelNav.Height = btnUsers.Height;
             panelNav.Top = btnUsers.Top;
             panelNav.Left = btnUsers.Left;
@@ -110,6 +110,7 @@ namespace e_shift.Forms
 
         private void btnReports_Click(object sender, EventArgs e)
         {
+            loadForm(new ReportForm());
             panelNav.Height = btnReports.Height;
             panelNav.Top = btnReports.Top;
             panelNav.Left = btnReports.Left;
@@ -162,5 +163,7 @@ namespace e_shift.Forms
             loginForm.Show();
             this.Hide();
         }
+
+
     }
 }

@@ -18,5 +18,6 @@ namespace e_shift.Data
         public DbSet<Load> Loads { get; set; }
         public DbSet<Product> Products { get; set; }
         public DbSet<Transport> Transports { get; set; }
+        public DbSet<Payment> Payments { get; set; }
     }
 }

@@ -15,6 +15,7 @@ namespace e_shift.Model
         public string Pickup { get; set; }
         public string Delivery { get; set; }
         public string ContactNumber { get; set; }
+        public decimal DeliveryCharges { get; set; }
         public string User { get; set; }
         public string CreatedDate { get; set; }
         public bool Approval { get; set; }

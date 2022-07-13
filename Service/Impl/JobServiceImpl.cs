@@ -17,10 +17,12 @@ namespace e_shift.Service.Impl
     {
         private AppDBContext dbContext;
         private UserService userService;
+        private PaymentService paymentService;
         public JobServiceImpl()
         {
             dbContext = AppDbConnection.getAppDBContext();
             userService = ServiceFactory.getInstance().getFactory(ServiceFactory.Instance.USER);
+            paymentService = ServiceFactory.getInstance().getFactory(ServiceFactory.Instance.PAYMENT);
         }
         public void Delete(int id)
         {
@@ -33,7 +35,7 @@ namespace e_shift.Service.Impl
             {
                 return dbContext.Jobs.Find(id);
             }
-            catch (Exception e)
+             catch (Exception e)
             {
                 throw new Exception("Failed To Find Job " + e.Message);
             }
@@ -43,7 +45,7 @@ namespace e_shift.Service.Impl
         {
             try
             {
-                return dbContext.Jobs.Include(j => j.Transport).Include(j => j.PickupLocation).Include(j => j.DeliveryLocation)
+                List<JobsTableModel> jobsTableModels =  dbContext.Jobs.Include(j => j.Transport).Include(j => j.PickupLocation).Include(j => j.DeliveryLocation)
                     .Include(j => j.User).Include(j => j.Loads).Where(u => u.IsDeleted == false).Select(res => new JobsTableModel()
                     {
                         Id = res.Id,
@@ -55,8 +57,18 @@ namespace e_shift.Service.Impl
                         Approval = res.IsApproved,
                         IsDelivered = res.IsDelivered,
                         IsSuccess = res.IsSuccess,
-                        CreatedDate = res.CreatedAt.ToString()
+                        CreatedDate = res.CreatedAt.ToString(),
                     }).ToList<JobsTableModel>();
+
+                jobsTableModels.ForEach(job => {
+                    Payment payment = paymentService.Get(job.Id);
+                    if (payment != null)
+                    {
+                        job.DeliveryCharges = payment.DeliveryCharges;
+                    }
+                });
+
+                return jobsTableModels;
             }
             catch (Exception)
             {
@@ -68,7 +80,7 @@ namespace e_shift.Service.Impl
         {
             try
             {
-                return dbContext.Jobs.Where(j=> j.User.Id == id).Select(res=> new JobsTableModel()
+                List<JobsTableModel> jobsTableModels =  dbContext.Jobs.Where(j=> j.User.Id == id).Select(res=> new JobsTableModel()
                 {
                     Id = res.Id,
                     Transport = res.Transport.Vehicle,
@@ -81,6 +93,15 @@ namespace e_shift.Service.Impl
                     IsSuccess = res.IsSuccess,
                     CreatedDate = res.CreatedAt.ToString()
                 }).ToList<JobsTableModel>();
+
+                jobsTableModels.ForEach(job => {
+                    Payment payment = paymentService.Get(job.Id);
+                    if (payment!=null) {
+                        job.DeliveryCharges = payment.DeliveryCharges;
+                    }
+                });
+
+                return jobsTableModels;
             }
             catch (Exception e)
             {
@@ -93,12 +114,14 @@ namespace e_shift.Service.Impl
             try
             {
                 job.CreatedAt = DateTime.Now;
-                job.User = userService.Get(Convert.ToInt32(LoggedUserTemp.LoggedUserId));
+                job.User = userService.Get(LoggedUserTemp.LoggedUser.Id);
                 var result = dbContext.Jobs.Add(job);
                 dbContext.Entry(job.Transport).State = EntityState.Unchanged;
                 dbContext.Entry(job.DeliveryLocation).State = EntityState.Unchanged;
                 dbContext.Entry(job.PickupLocation).State = EntityState.Unchanged;
                 dbContext.Entry(job.User).State = EntityState.Unchanged;
+                
+                dbContext.Entry(job).State = EntityState.Added;
                 dbContext.SaveChanges();
                 return job;
             }
@@ -110,7 +133,7 @@ namespace e_shift.Service.Impl
 
         public void Update(Job job)
         {
-            throw new NotImplementedException();
+            
         }
     }
 }

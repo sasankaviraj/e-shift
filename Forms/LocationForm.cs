@@ -43,6 +43,7 @@ namespace e_shift.Forms
                 FetchAllPickups();
                 MessageBox.Show("Pickup Location Saved Successfully");
                 txtPickup.Clear();
+                txtUnitsPk.Clear();
             } catch (Exception ex) {
                 Console.WriteLine(ex);
                 MessageBox.Show("Failed To Save The Pickup Location. " + ex.Message);
@@ -98,6 +99,7 @@ namespace e_shift.Forms
                 FetchAllDeliveries();
                 MessageBox.Show("Delivery Location Saved Successfully");
                 txtDelivery.Clear();
+                txtUnitsDl.Clear();
             }
             catch (Exception ex)
             {

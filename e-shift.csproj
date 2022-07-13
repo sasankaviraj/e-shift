@@ -42,6 +42,30 @@
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>packages\EntityFramework.6.4.4\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.ReportViewer.Common, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1484.0\lib\net40\Microsoft.ReportViewer.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.DataVisualization, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1484.0\lib\net40\Microsoft.ReportViewer.DataVisualization.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.Design, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1484.0\lib\net40\Microsoft.ReportViewer.Design.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.ProcessingObjectModel, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1484.0\lib\net40\Microsoft.ReportViewer.ProcessingObjectModel.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.WebForms, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.Report.Viewer.10.0.0.0\lib\net\Microsoft.ReportViewer.WebForms.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.WinForms, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1484.0\lib\net40\Microsoft.ReportViewer.WinForms.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.SqlServer.Types, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.SqlServer.Types.14.0.314.76\lib\net40\Microsoft.SqlServer.Types.dll</HintPath>
+    </Reference>
+    <Reference Include="SimpleReports, Version=1.0.0.8, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\SimpleReports.1.0.0.8\lib\net45\SimpleReports.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
@@ -63,6 +87,7 @@
     <Compile Include="Data\DeliveryLocation.cs" />
     <Compile Include="Data\Job.cs" />
     <Compile Include="Data\Load.cs" />
+    <Compile Include="Data\Payment.cs" />
     <Compile Include="Data\PickupLocation.cs" />
     <Compile Include="Data\Product.cs" />
     <Compile Include="Data\Transport.cs" />
@@ -98,6 +123,12 @@
     </Compile>
     <Compile Include="Forms\DashboardForm.Designer.cs">
       <DependentUpon>DashboardForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\IncomeReportForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\IncomeReportForm.Designer.cs">
+      <DependentUpon>IncomeReportForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\LoadForm.cs">
       <SubType>Form</SubType>
@@ -135,15 +166,27 @@
     <Compile Include="Forms\ProductForm.Designer.cs">
       <DependentUpon>ProductForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\ProductReportForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\ProductReportForm.Designer.cs">
+      <DependentUpon>ProductReportForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\ReportForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\ReportForm.Designer.cs">
+      <DependentUpon>ReportForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\TransportForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\TransportForm.Designer.cs">
       <DependentUpon>TransportForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202207111845077_Initial.cs" />
-    <Compile Include="Migrations\202207111845077_Initial.designer.cs">
-      <DependentUpon>202207111845077_Initial.cs</DependentUpon>
+    <Compile Include="Migrations\202207130629143_Initial.cs" />
+    <Compile Include="Migrations\202207130629143_Initial.designer.cs">
+      <DependentUpon>202207130629143_Initial.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Model\JobsTableModel.cs" />
@@ -155,12 +198,26 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="Reports\IncomeReport.cs">
+      <DependentUpon>IncomeReport.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\IncomeReport.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>IncomeReport.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\ProductsDelivered.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ProductsDelivered.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Service\CustomerService.cs" />
     <Compile Include="Service\DeliveryLocationService.cs" />
     <Compile Include="Service\Impl\CustomerServiceImpl.cs" />
     <Compile Include="Service\Impl\DeliveryLocationServiceImpl.cs" />
     <Compile Include="Service\Impl\JobServiceImpl.cs" />
     <Compile Include="Service\Impl\LoadServiceImpl.cs" />
+    <Compile Include="Service\Impl\PaymentServiceImpl.cs" />
     <Compile Include="Service\Impl\PickupLocationServiceImpl.cs" />
     <Compile Include="Service\Impl\ProductServiceImpl.cs" />
     <Compile Include="Service\Impl\TransportServiceImpl.cs" />
@@ -168,11 +225,13 @@
     <Compile Include="Service\Impl\UserTypeServiceImpl.cs" />
     <Compile Include="Service\JobService.cs" />
     <Compile Include="Service\LoadService.cs" />
+    <Compile Include="Service\PaymentService.cs" />
     <Compile Include="Service\PickupLocationService.cs" />
     <Compile Include="Service\ProductService.cs" />
     <Compile Include="Service\TransportService.cs" />
     <Compile Include="Service\UserService.cs" />
     <Compile Include="Service\UserTypeService.cs" />
+    <Compile Include="SqlServerTypes\Loader.cs" />
     <Compile Include="Util\EncryptDecryptPassword.cs" />
     <Compile Include="Util\LoggedUserTemp.cs" />
     <Compile Include="Util\Validator.cs" />
@@ -190,6 +249,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\DashboardForm.resx">
       <DependentUpon>DashboardForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\IncomeReportForm.resx">
+      <DependentUpon>IncomeReportForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\LoadForm.resx">
       <DependentUpon>LoadForm.cs</DependentUpon>
@@ -209,17 +271,25 @@
     <EmbeddedResource Include="Forms\ProductForm.resx">
       <DependentUpon>ProductForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\ProductReportForm.resx">
+      <DependentUpon>ProductReportForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\ReportForm.resx">
+      <DependentUpon>ReportForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\TransportForm.resx">
       <DependentUpon>TransportForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202207111845077_Initial.resx">
-      <DependentUpon>202207111845077_Initial.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202207130629143_Initial.resx">
+      <DependentUpon>202207130629143_Initial.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="Reports\IncomeReportView.rdlc" />
+    <EmbeddedResource Include="Reports\ProductsDelivered.rdlc" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -230,6 +300,28 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <None Include="Reports\IncomeReport.xsc">
+      <DependentUpon>IncomeReport.xsd</DependentUpon>
+    </None>
+    <None Include="Reports\IncomeReport.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>IncomeReport.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Reports\IncomeReport.xss">
+      <DependentUpon>IncomeReport.xsd</DependentUpon>
+    </None>
+    <None Include="Reports\ProductsDelivered.xsc">
+      <DependentUpon>ProductsDelivered.xsd</DependentUpon>
+    </None>
+    <None Include="Reports\ProductsDelivered.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>ProductsDelivered.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Reports\ProductsDelivered.xss">
+      <DependentUpon>ProductsDelivered.xsd</DependentUpon>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -240,6 +332,19 @@
   <ItemGroup>
     <Content Include="Assets\Images\60111.jpg" />
     <Content Include="Assets\Images\home.png" />
+    <Content Include="SqlServerTypes\readme.htm" />
+    <Content Include="SqlServerTypes\x64\msvcr120.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SqlServerTypes\x64\SqlServerSpatial140.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SqlServerTypes\x86\msvcr120.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SqlServerTypes\x86\SqlServerSpatial140.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <None Include="Assets\Images\rosebox-BFdSCxmqvYc-unsplash.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

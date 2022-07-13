@@ -26,7 +26,8 @@ namespace e_shift.Factory
             JOB,
             LOAD,
             TRANSPORT,
-            PRODUCT
+            PRODUCT,
+            PAYMENT
         }
 
         public static ServiceFactory getInstance()
@@ -60,6 +61,8 @@ namespace e_shift.Factory
                     return new TransportServiceImpl();
                 case Instance.PRODUCT:
                     return new ProductServiceImpl();
+                case Instance.PAYMENT:
+                    return new PaymentServiceImpl();
                 default: return null;
             }
         }
