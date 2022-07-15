@@ -12,9 +12,11 @@ namespace e_shift.Service
     {
         Job Save(Job job);
         Job Get(int id);
+
+        List<JobsTableModel> Search(string search);
         List<JobsTableModel> GetByUserId(int id);
         void Delete(int id);
-        void Update(Job job);
+        void Update(int id);
         List<JobsTableModel> GetAll();
     }
 }

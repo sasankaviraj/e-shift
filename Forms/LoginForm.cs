@@ -57,7 +57,7 @@ namespace e_shift.Forms
         {
             ManageUsers manageUsers = new ManageUsers(true);
             manageUsers.Show();
-            this.Hide();
+            
         }
     }
 }

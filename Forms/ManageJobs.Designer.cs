@@ -41,12 +41,14 @@
             this.cmbTransport = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.tblJobs = new System.Windows.Forms.DataGridView();
+            this.btnApprove = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tblJobs)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.btnApprove);
             this.panel1.Controls.Add(this.btnAddLoad);
             this.panel1.Controls.Add(this.txtDeliveryAddress);
             this.panel1.Controls.Add(this.label4);
@@ -178,6 +180,20 @@
             this.tblJobs.TabIndex = 1;
             this.tblJobs.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.tblJobs_CellContentClick);
             // 
+            // btnApprove
+            // 
+            this.btnApprove.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(126)))), ((int)(((byte)(249)))));
+            this.btnApprove.FlatAppearance.BorderSize = 0;
+            this.btnApprove.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnApprove.ForeColor = System.Drawing.Color.White;
+            this.btnApprove.Location = new System.Drawing.Point(30, 195);
+            this.btnApprove.Name = "btnApprove";
+            this.btnApprove.Size = new System.Drawing.Size(256, 20);
+            this.btnApprove.TabIndex = 22;
+            this.btnApprove.Text = "Approve";
+            this.btnApprove.UseVisualStyleBackColor = false;
+            this.btnApprove.Click += new System.EventHandler(this.btnApprove_Click);
+            // 
             // ManageJobs
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -211,5 +227,6 @@
         private System.Windows.Forms.Label lblName;
         private System.Windows.Forms.Button btnAddLoad;
         private System.Windows.Forms.DataGridView tblJobs;
+        private System.Windows.Forms.Button btnApprove;
     }
 }

@@ -30,13 +30,21 @@ namespace e_shift.Forms
         }
         private void FetchProducts()
         {
-            products = productService.GetAll();
-            tblProducts.DataSource = products;
-            tblProducts.Columns["IsDeleted"].Visible = false;
-            tblProducts.Columns["CreatedAt"].Visible = false;
-            tblProducts.Columns["ModifiedAt"].Visible = false;
-            tblProducts.Columns["DeletedAt"].Visible = false;
-            tblProducts.Columns["Users"].Visible = false;
+            
+            try
+            {
+                products = productService.GetAll();
+                tblProducts.DataSource = products;
+                tblProducts.Columns["IsDeleted"].Visible = false;
+                tblProducts.Columns["CreatedAt"].Visible = false;
+                tblProducts.Columns["ModifiedAt"].Visible = false;
+                tblProducts.Columns["DeletedAt"].Visible = false;
+                tblProducts.Columns["Users"].Visible = false;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
 
         }
 

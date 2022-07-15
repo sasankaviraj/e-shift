@@ -34,12 +34,17 @@ namespace e_shift.Forms
         }
 
         void FetchProductTypes() {
-            List<Product> products = productService.GetAll();
-            products.ForEach(value =>
-            {
-                productTypesMap.Add(value.Type, value.Id);
-                cmbProducts.Items.Add(value.Type);
-            });
+            try {
+                List<Product> products = productService.GetAll();
+                products.ForEach(value =>
+                {
+                    productTypesMap.Add(value.Type, value.Id);
+                    cmbProducts.Items.Add(value.Type);
+                });
+            } catch (Exception ex) {
+                MessageBox.Show(ex.Message);
+            }
+            
         }
         private void btnExit_Click(object sender, EventArgs e)
         {
@@ -48,14 +53,20 @@ namespace e_shift.Forms
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            Load load = new Load();
-            load.Job = job;
-            load.Product = txtProduct.Text;
-            load.Weight = Convert.ToDecimal(txtWeight.Text);
-            Product product = productService.Get(productTypesMap[cmbProducts.Text]); ;
-            load.ProductType = product;
-            loads.Add(load);
-            SetTable();
+            try {
+                Load load = new Load();
+                load.Job = job;
+                load.Product = txtProduct.Text;
+                load.Weight = Convert.ToDecimal(txtWeight.Text);
+                Product product = productService.Get(productTypesMap[cmbProducts.Text]); ;
+                load.ProductType = product;
+                loads.Add(load);
+                SetTable();
+            }
+            catch(Exception ex){
+                MessageBox.Show(ex.Message);
+            }
+            
         }
 
         private void SetTable() {

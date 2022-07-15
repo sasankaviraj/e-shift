@@ -29,6 +29,7 @@ namespace e_shift.Forms
         private TransportService transportService;
         private PickupLocationService pickupLocationService;
         private DeliveryLocationService deliveryLocationService;
+        private int JobId;
         public ManageJobs()
         {
             InitializeComponent();
@@ -45,43 +46,78 @@ namespace e_shift.Forms
 
         private void FetchAllJobs()
         {
-            if (LoggedUserTemp.LoggedUser.UserType!=null) {
-                if (LoggedUserTemp.LoggedUser.UserType.Equals("ADMIN")) {
-                    jobs = jobService.GetAll();
-                }
-                if (LoggedUserTemp.LoggedUser.UserType.Equals("CUSTOMER")) {
-                    jobs = jobService.GetByUserId(Convert.ToInt32(LoggedUserTemp.LoggedUser.Id));
-                }
-            };
-            tblJobs.DataSource = jobs;
+            try {
+                btnApprove.Hide();
+                if (LoggedUserTemp.LoggedUser.UserType != null)
+                {
+                    if (LoggedUserTemp.LoggedUser.UserType.Equals("ADMIN"))
+                    {
+                        jobs = jobService.GetAll();
+                        btnApprove.Show();
+                    }
+                    if (LoggedUserTemp.LoggedUser.UserType.Equals("CUSTOMER"))
+                    {
+                        jobs = jobService.GetByUserId(Convert.ToInt32(LoggedUserTemp.LoggedUser.Id));
+                        btnApprove.Hide();
+                    }
+                };
+                tblJobs.DataSource = jobs;
+            } catch (Exception ex) {
+                MessageBox.Show(ex.Message);
+            }
+
             
         }
 
         private void FetchTransport()
         {
-            transports = transportService.GetAll();
-            transports.ForEach(value => {
-                transportMap.Add(value.Vehicle, value.Id);
-                cmbTransport.Items.Add(value.Vehicle);
-            });
+            try
+            {
+                transports = transportService.GetAll();
+                transports.ForEach(value => {
+                    transportMap.Add(value.Vehicle, value.Id);
+                    cmbTransport.Items.Add(value.Vehicle);
+                });
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
         }
 
         private void FetchPickups()
         {
-            pickupLocations = pickupLocationService.GetAll();
-            pickupLocations.ForEach(value => {
-                pickupLocationMap.Add(value.Location, value.Id);
-                cmbPickups.Items.Add(value.Location);
-            });
+            try
+            {
+                pickupLocations = pickupLocationService.GetAll();
+                pickupLocations.ForEach(value => {
+                    pickupLocationMap.Add(value.Location, value.Id);
+                    cmbPickups.Items.Add(value.Location);
+                });
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
         }
 
         private void FetchDeliveries()
         {
-            deliveryLocations = deliveryLocationService.GetAll();
-            deliveryLocations.ForEach(value => {
-                deliveryLocationMap.Add(value.Location, value.Id);
-                cmbDelivery.Items.Add(value.Location);
-            });
+            try
+            {
+                deliveryLocations = deliveryLocationService.GetAll();
+                deliveryLocations.ForEach(value => {
+                    deliveryLocationMap.Add(value.Location, value.Id);
+                    cmbDelivery.Items.Add(value.Location);
+                });
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
         }
 
         private void btnAddLoad_Click(object sender, EventArgs e)
@@ -140,30 +176,29 @@ namespace e_shift.Forms
             clearFields();
             row = tblJobs.Rows[e.RowIndex];
             row.Selected = true;
-            Console.WriteLine(e.ColumnIndex);
-            if (e.ColumnIndex == 0)
-            {
-                
-            }
-            if (e.ColumnIndex == 1)
-            {
-                DialogResult dialogResult = MessageBox.Show("Are You Sure?", "Delete User", MessageBoxButtons.YesNo);
-                if (dialogResult == DialogResult.Yes)
-                {
-                    try
-                    {
-                        //userService.Delete(Convert.ToInt32(row.Cells[2].Value));
-                        //FetchAllUsers();
-                        MessageBox.Show("User Deleted Successfully");
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show(ex.Message);
-                    }
-                }
+            JobId = Convert.ToInt32(row.Cells[2].Value);
+//            if (e.ColumnIndex == 0)
+//            {
+
+//;            }
+//            if (e.ColumnIndex == 1)
+//            {
+//                DialogResult dialogResult = MessageBox.Show("Are You Sure?", "Delete User", MessageBoxButtons.YesNo);
+//                if (dialogResult == DialogResult.Yes)
+//                {
+//                    try
+//                    {
+//                        jobService.Delete(Convert.ToInt32(row.Cells[2].Value));
+//                        MessageBox.Show("User Deleted Successfully");
+//                    }
+//                    catch (Exception ex)
+//                    {
+//                        MessageBox.Show(ex.Message);
+//                    }
+//                }
 
 
-            }
+//            }
         }
 
         private void clearFields() {
@@ -172,6 +207,22 @@ namespace e_shift.Forms
             cmbTransport.ResetText();
             cmbDelivery.ResetText();
             cmbPickups.ResetText();
+        }
+
+        private void btnApprove_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (JobId == 0) {
+                    throw new Exception("Error on finding the job");
+                }
+                jobService.Update(JobId);
+                MessageBox.Show("Job Approved Successfully");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
     }
 }

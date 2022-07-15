@@ -30,14 +30,23 @@ namespace e_shift.Forms
             InitializeComponent();
             userTypeMap = new Dictionary<string, int>();
             userService = ServiceFactory.getInstance().getFactory(ServiceFactory.Instance.USER);
-            FetchAllUsers();
-            SetTable();
+            btnExit.Show();
+            if (!(LoggedUserTemp.LoggedUser.UserName == null))
+            {
+                FetchAllUsers();
+                SetTable();
+                btnExit.Hide();
+            }
+
         }
 
 
         private void FetchAllUsers() {
+  
             users = userService.GetAll();
             tblUsers.DataSource = users;
+            btnExit.Show();
+            
         }
 
         private void SetTable() {
@@ -154,6 +163,11 @@ namespace e_shift.Forms
         private void btnClear_Click(object sender, EventArgs e)
         {
             clearFields();
+        }
+
+        private void btnExit_Click(object sender, EventArgs e)
+        {
+            this.Hide();
         }
     }
 }

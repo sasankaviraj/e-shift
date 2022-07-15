@@ -42,9 +42,10 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.lblUserName = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.txtSearchWithJobNo = new System.Windows.Forms.TextBox();
+            this.txtSearch = new System.Windows.Forms.TextBox();
             this.btnExit = new System.Windows.Forms.Button();
             this.pnlDashBoard = new System.Windows.Forms.Panel();
+            this.btnSearch = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -254,16 +255,15 @@
             this.label1.TabIndex = 1;
             this.label1.Text = "E-SHIFT";
             // 
-            // txtSearchWithJobNo
+            // txtSearch
             // 
-            this.txtSearchWithJobNo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(74)))), ((int)(((byte)(79)))), ((int)(((byte)(99)))));
-            this.txtSearchWithJobNo.Font = new System.Drawing.Font("Myanmar Text", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtSearchWithJobNo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(200)))), ((int)(((byte)(200)))));
-            this.txtSearchWithJobNo.Location = new System.Drawing.Point(539, 32);
-            this.txtSearchWithJobNo.Name = "txtSearchWithJobNo";
-            this.txtSearchWithJobNo.Size = new System.Drawing.Size(408, 28);
-            this.txtSearchWithJobNo.TabIndex = 2;
-            this.txtSearchWithJobNo.Text = "Search With The Job Number";
+            this.txtSearch.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(74)))), ((int)(((byte)(79)))), ((int)(((byte)(99)))));
+            this.txtSearch.Font = new System.Drawing.Font("Myanmar Text", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtSearch.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(200)))), ((int)(((byte)(200)))));
+            this.txtSearch.Location = new System.Drawing.Point(539, 32);
+            this.txtSearch.Name = "txtSearch";
+            this.txtSearch.Size = new System.Drawing.Size(285, 28);
+            this.txtSearch.TabIndex = 2;
             // 
             // btnExit
             // 
@@ -285,15 +285,30 @@
             this.pnlDashBoard.Size = new System.Drawing.Size(846, 521);
             this.pnlDashBoard.TabIndex = 5;
             // 
+            // btnSearch
+            // 
+            this.btnSearch.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(126)))), ((int)(((byte)(249)))));
+            this.btnSearch.FlatAppearance.BorderSize = 0;
+            this.btnSearch.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSearch.ForeColor = System.Drawing.Color.White;
+            this.btnSearch.Location = new System.Drawing.Point(830, 32);
+            this.btnSearch.Name = "btnSearch";
+            this.btnSearch.Size = new System.Drawing.Size(101, 27);
+            this.btnSearch.TabIndex = 23;
+            this.btnSearch.Text = "Search";
+            this.btnSearch.UseVisualStyleBackColor = false;
+            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
+            // 
             // Dashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(51)))), ((int)(((byte)(73)))));
             this.ClientSize = new System.Drawing.Size(1051, 677);
+            this.Controls.Add(this.btnSearch);
             this.Controls.Add(this.pnlDashBoard);
             this.Controls.Add(this.btnExit);
-            this.Controls.Add(this.txtSearchWithJobNo);
+            this.Controls.Add(this.txtSearch);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -326,8 +341,9 @@
         private System.Windows.Forms.Button btnTransport;
         private System.Windows.Forms.Panel panelNav;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox txtSearchWithJobNo;
+        private System.Windows.Forms.TextBox txtSearch;
         private System.Windows.Forms.Button btnExit;
         private System.Windows.Forms.Panel pnlDashBoard;
+        private System.Windows.Forms.Button btnSearch;
     }
 }

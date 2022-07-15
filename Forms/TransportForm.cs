@@ -31,12 +31,21 @@ namespace e_shift.Forms
 
         private void FetchAllTransports()
         {
-            transports = transportService.GetAll();
-            tblTransport.DataSource = transports;
-            tblTransport.Columns["IsDeleted"].Visible = false;
-            tblTransport.Columns["CreatedAt"].Visible = false;
-            tblTransport.Columns["ModifiedAt"].Visible = false;
-            tblTransport.Columns["DeletedAt"].Visible = false;
+            try
+            {
+                transports = transportService.GetAll();
+                tblTransport.DataSource = transports;
+                tblTransport.Columns["IsDeleted"].Visible = false;
+                tblTransport.Columns["CreatedAt"].Visible = false;
+                tblTransport.Columns["ModifiedAt"].Visible = false;
+                tblTransport.Columns["DeletedAt"].Visible = false;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+
+            }
+
         }
 
         private void SetTable()

@@ -26,7 +26,17 @@ namespace e_shift.Service.Impl
         }
         public void Delete(int id)
         {
-            throw new NotImplementedException();
+            try
+            {
+                Job job = dbContext.Jobs.Find(id);
+                job.IsDeleted = true;
+                job.DeletedAt = DateTime.Now;
+                dbContext.SaveChanges();
+            }
+            catch (Exception e)
+            {
+                throw new Exception("Failed To Delete Job. " + e.Message);
+            }
         }
 
         public Job Get(int id)
@@ -46,7 +56,7 @@ namespace e_shift.Service.Impl
             try
             {
                 List<JobsTableModel> jobsTableModels =  dbContext.Jobs.Include(j => j.Transport).Include(j => j.PickupLocation).Include(j => j.DeliveryLocation)
-                    .Include(j => j.User).Include(j => j.Loads).Where(u => u.IsDeleted == false).Select(res => new JobsTableModel()
+                    .Include(j => j.User).Include(j => j.Loads).Where(u => u.IsDeleted == false).Where(j => j.IsApproved == false).Select(res => new JobsTableModel()
                     {
                         Id = res.Id,
                         Transport = res.Transport.Vehicle,
@@ -131,9 +141,55 @@ namespace e_shift.Service.Impl
             }
         }
 
-        public void Update(Job job)
+        public List<JobsTableModel> Search(string search)
         {
-            
+            try
+            {
+                List<JobsTableModel> jobsTableModels = dbContext.Jobs.Include(j => j.Transport).Include(j => j.PickupLocation).Include(j => j.DeliveryLocation)
+                    .Include(j => j.User).Include(j => j.Loads).Where(u => u.IsDeleted == false).Where(j => j.Id.ToString().Contains(search) || j.User.FirstName.Contains(search))
+                    .Select(res => new JobsTableModel()
+                    {
+                        Id = res.Id,
+                        Transport = res.Transport.Vehicle,
+                        Pickup = res.PickupLocation.Location,
+                        Delivery = res.DeliveryLocation.Location,
+                        ContactNumber = res.User.ContactNumber,
+                        User = res.User.FirstName + " " + res.User.LastName,
+                        Approval = res.IsApproved,
+                        IsDelivered = res.IsDelivered,
+                        IsSuccess = res.IsSuccess,
+                        CreatedDate = res.CreatedAt.ToString(),
+                    }).ToList<JobsTableModel>();
+
+                jobsTableModels.ForEach(job => {
+                    Payment payment = paymentService.Get(job.Id);
+                    if (payment != null)
+                    {
+                        job.DeliveryCharges = payment.DeliveryCharges;
+                    }
+                });
+
+                return jobsTableModels;
+            }
+            catch (Exception)
+            {
+                throw new Exception("Failed To Find Users");
+            }
+        }
+
+        public void Update(int id)
+        {
+            try
+            {
+                Job job = dbContext.Jobs.Find(id);
+                job.IsApproved = true;
+                job.ModifiedAt = DateTime.Now;
+                dbContext.SaveChanges();
+            }
+            catch (Exception e)
+            {
+                throw new Exception("Failed To Approve Job. " + e.Message);
+            }
         }
     }
 }

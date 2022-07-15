@@ -130,6 +130,12 @@
     <Compile Include="Forms\IncomeReportForm.Designer.cs">
       <DependentUpon>IncomeReportForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\JobSearchPopup.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\JobSearchPopup.Designer.cs">
+      <DependentUpon>JobSearchPopup.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\LoadForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -252,6 +258,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\IncomeReportForm.resx">
       <DependentUpon>IncomeReportForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\JobSearchPopup.resx">
+      <DependentUpon>JobSearchPopup.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\LoadForm.resx">
       <DependentUpon>LoadForm.cs</DependentUpon>

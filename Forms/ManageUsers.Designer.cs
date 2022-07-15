@@ -40,12 +40,13 @@
             this.btnClear = new System.Windows.Forms.Button();
             this.tblUsers = new System.Windows.Forms.DataGridView();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.txtFirstName = new System.Windows.Forms.TextBox();
-            this.lblFirstName = new System.Windows.Forms.Label();
             this.txtNIC = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.txtLastName = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
+            this.txtFirstName = new System.Windows.Forms.TextBox();
+            this.lblFirstName = new System.Windows.Forms.Label();
+            this.btnExit = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.tblUsers)).BeginInit();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -161,6 +162,7 @@
             // 
             this.panel1.AutoSize = true;
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel1.Controls.Add(this.btnExit);
             this.panel1.Controls.Add(this.txtNIC);
             this.panel1.Controls.Add(this.label6);
             this.panel1.Controls.Add(this.txtLastName);
@@ -181,23 +183,6 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(776, 319);
             this.panel1.TabIndex = 16;
-            // 
-            // txtFirstName
-            // 
-            this.txtFirstName.Location = new System.Drawing.Point(116, 14);
-            this.txtFirstName.Name = "txtFirstName";
-            this.txtFirstName.Size = new System.Drawing.Size(359, 20);
-            this.txtFirstName.TabIndex = 18;
-            // 
-            // lblFirstName
-            // 
-            this.lblFirstName.AutoSize = true;
-            this.lblFirstName.ForeColor = System.Drawing.Color.White;
-            this.lblFirstName.Location = new System.Drawing.Point(26, 17);
-            this.lblFirstName.Name = "lblFirstName";
-            this.lblFirstName.Size = new System.Drawing.Size(57, 13);
-            this.lblFirstName.TabIndex = 17;
-            this.lblFirstName.Text = "First Name";
             // 
             // txtNIC
             // 
@@ -232,6 +217,36 @@
             this.label7.Size = new System.Drawing.Size(58, 13);
             this.label7.TabIndex = 21;
             this.label7.Text = "Last Name";
+            // 
+            // txtFirstName
+            // 
+            this.txtFirstName.Location = new System.Drawing.Point(116, 14);
+            this.txtFirstName.Name = "txtFirstName";
+            this.txtFirstName.Size = new System.Drawing.Size(359, 20);
+            this.txtFirstName.TabIndex = 18;
+            // 
+            // lblFirstName
+            // 
+            this.lblFirstName.AutoSize = true;
+            this.lblFirstName.ForeColor = System.Drawing.Color.White;
+            this.lblFirstName.Location = new System.Drawing.Point(26, 17);
+            this.lblFirstName.Name = "lblFirstName";
+            this.lblFirstName.Size = new System.Drawing.Size(57, 13);
+            this.lblFirstName.TabIndex = 17;
+            this.lblFirstName.Text = "First Name";
+            // 
+            // btnExit
+            // 
+            this.btnExit.FlatAppearance.BorderSize = 0;
+            this.btnExit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnExit.ForeColor = System.Drawing.Color.White;
+            this.btnExit.Location = new System.Drawing.Point(746, 5);
+            this.btnExit.Name = "btnExit";
+            this.btnExit.Size = new System.Drawing.Size(25, 25);
+            this.btnExit.TabIndex = 25;
+            this.btnExit.Text = "X";
+            this.btnExit.UseVisualStyleBackColor = true;
+            this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
             // 
             // ManageUsers
             // 
@@ -271,5 +286,6 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox txtLastName;
         private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Button btnExit;
     }
 }

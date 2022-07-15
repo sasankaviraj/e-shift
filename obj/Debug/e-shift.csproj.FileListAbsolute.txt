@@ -83,3 +83,4 @@ C:\London Metropolitan University\AD\coursework 1\e-shift\e-shift\bin\Debug\zh-C
 C:\London Metropolitan University\AD\coursework 1\e-shift\e-shift\obj\Debug\e_shift.Forms.IncomeReportForm.resources
 C:\London Metropolitan University\AD\coursework 1\e-shift\e-shift\obj\Debug\e_shift.Forms.ReportForm.resources
 C:\London Metropolitan University\AD\coursework 1\e-shift\e-shift\obj\Debug\e_shift.Forms.ProductReportForm.resources
+C:\London Metropolitan University\AD\coursework 1\e-shift\e-shift\obj\Debug\e_shift.Forms.JobSearchPopup.resources

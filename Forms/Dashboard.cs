@@ -9,11 +9,15 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Runtime.InteropServices;
 using e_shift.Util;
+using e_shift.Factory;
+using e_shift.Service;
+using e_shift.Model;
 
 namespace e_shift.Forms
 {
     public partial class Dashboard : Form
     {
+        private JobService jobService;
         [DllImport("Gdi32.dll",EntryPoint = "CreateRoundRectRgn")]
 
         private static extern IntPtr CreateRoundRectRgn(
@@ -33,6 +37,7 @@ namespace e_shift.Forms
             panelNav.Left = btnDashboard.Left;
             btnDashboard.BackColor = Color.FromArgb(46, 51, 73);
             lblUserName.Text = LoggedUserTemp.LoggedUser.UserName;
+            jobService = ServiceFactory.getInstance().getFactory(ServiceFactory.Instance.JOB);
         }
 
         public void loadForm(object Form) {
@@ -164,6 +169,15 @@ namespace e_shift.Forms
             this.Hide();
         }
 
-
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
+            try {
+                List<JobsTableModel> jobsTableModels = jobService.Search(txtSearch.Text);
+                JobSearchPopup jobSearchPopup = new JobSearchPopup(jobsTableModels);
+                jobSearchPopup.Show();
+            } catch (Exception ex) {
+                MessageBox.Show(ex.Message);
+            }
+        }
     }
 }

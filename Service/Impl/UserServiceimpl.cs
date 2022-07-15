@@ -21,6 +21,27 @@ namespace e_shift.Service.Impl
             dbContext = AppDbConnection.getAppDBContext();
             typeService = ServiceFactory.getInstance().getFactory(ServiceFactory.Instance.USER_TYPE);
         }
+
+
+        public void Save(User user)
+        {
+            try
+            {
+                User res = dbContext.Users.Where(u => u.UserName == user.UserName).FirstOrDefault();
+                if (res != null)
+                {
+                    throw new Exception("Username Already Defined");
+                }
+                user.CreatedAt = DateTime.Now;
+                var result = dbContext.Users.Add(user);
+                dbContext.SaveChanges();
+            }
+            catch (Exception e)
+            {
+                throw new Exception("Failed To Save User. " + e.Message);
+            }
+        }
+
         public void Delete(int id)
         {
             try
@@ -86,24 +107,6 @@ namespace e_shift.Service.Impl
             catch (Exception)
             {
                 throw new Exception("Failed To Find Users");
-            }
-        }
-
-        public void Save(User user)
-        {
-            try
-            {
-                User res = dbContext.Users.Where(u => u.UserName == user.UserName).FirstOrDefault();
-                if (res!=null) {
-                    throw new Exception("Username Already Defined");
-                }
-                user.CreatedAt = DateTime.Now;                
-                var result = dbContext.Users.Add(user);
-                dbContext.SaveChanges();
-            }
-            catch (Exception e)
-            {
-                throw new Exception("Failed To Save User. "+e.Message);
             }
         }
 

@@ -1,4 +1,7 @@
-﻿using e_shift.Util;
+﻿using e_shift.Factory;
+using e_shift.Model;
+using e_shift.Service;
+using e_shift.Util;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -13,10 +16,12 @@ namespace e_shift.Forms
 {
     public partial class CuistomerDashboard : Form
     {
+        private JobService jobService;
         public CuistomerDashboard()
         {
             InitializeComponent();
             lblUserName.Text = (LoggedUserTemp.LoggedUser.UserName == null) ? "Click To Sign In" : LoggedUserTemp.LoggedUser.UserName;
+            jobService = ServiceFactory.getInstance().getFactory(ServiceFactory.Instance.JOB);
         }
 
         public void loadForm(object Form)
@@ -62,6 +67,20 @@ namespace e_shift.Forms
         private void btnDashboard_Click(object sender, EventArgs e)
         {
             loadForm(new ManageJobs());
+        }
+
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                List<JobsTableModel> jobsTableModels = jobService.Search(txtSearch.Text);
+                JobSearchPopup jobSearchPopup = new JobSearchPopup(jobsTableModels);
+                jobSearchPopup.Show();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
     }
 }
