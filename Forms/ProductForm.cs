@@ -23,7 +23,6 @@ namespace e_shift.Forms
         public ProductForm()
         {
             InitializeComponent();
-            InitializeComponent();
             productService = ServiceFactory.getInstance().getFactory(ServiceFactory.Instance.PRODUCT);
             FetchProducts();
             setTable();
@@ -66,8 +65,8 @@ namespace e_shift.Forms
 
         private void ClearFields()
         {
-            txtProductType.Clear();
-            txtCharges.Clear();
+            txtproType.Clear();
+            txtProCharge.Clear();
             setUpdate = false;
             row.Selected = false;
         }
@@ -80,8 +79,8 @@ namespace e_shift.Forms
                 {
                     Product product = new Product();
                     product.Id = Convert.ToInt32(row.Cells[2].Value);
-                    product.Type = Validator.ValidateField(txtProductType.Text, "Product Type");
-                    product.Charges = Convert.ToInt32(Validator.ValidateNumbersWithDecimal(txtCharges.Text, "Charges"));
+                    product.Type = Validator.ValidateField(txtproType.Text, "Product Type");
+                    product.Charges = Convert.ToInt32(Validator.ValidateNumbersWithDecimal(txtProCharge.Text, "Charges"));
                     productService.Update(product);
                     FetchProducts();
                     ClearFields();
@@ -97,12 +96,12 @@ namespace e_shift.Forms
             {
                 try
                 {
-                    string text = txtProductType.Text;
-                    string text1 = txtCharges.Text;
+                    string text = txtproType.Text;
+                    string text1 = txtProCharge.Text;
                     Console.WriteLine();
                     Product product = new Product();
-                    product.Charges = Convert.ToInt32(Validator.ValidateNumbersWithDecimal(txtCharges.Text, "Charges"));
-                    product.Type = Validator.ValidateField(txtProductType.Text, "Product Type");
+                    product.Charges = Convert.ToInt32(Validator.ValidateNumbersWithDecimal(txtProCharge.Text, "Charges"));
+                    product.Type = Validator.ValidateField(txtproType.Text, "Product Type");
                     productService.Save(product);
                     FetchProducts();
                     MessageBox.Show("Product Saved Successfully");
@@ -122,8 +121,8 @@ namespace e_shift.Forms
             if (e.ColumnIndex == 0)
             {
                 setUpdate = true;
-                txtProductType.Text = row.Cells[3].Value.ToString();
-                txtCharges.Text = row.Cells[4].Value.ToString();
+                txtproType.Text = row.Cells[3].Value.ToString();
+                txtProCharge.Text = row.Cells[4].Value.ToString();
             }
             if (e.ColumnIndex == 1)
             {

@@ -49,9 +49,9 @@
             this.label4.ForeColor = System.Drawing.Color.White;
             this.label4.Location = new System.Drawing.Point(351, 21);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(64, 20);
+            this.label4.Size = new System.Drawing.Size(115, 20);
             this.label4.TabIndex = 22;
-            this.label4.Text = "Vehicle";
+            this.label4.Text = "Search Result";
             // 
             // btnExit
             // 
