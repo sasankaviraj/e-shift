@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btnDelete = new System.Windows.Forms.Button();
             this.btnApprove = new System.Windows.Forms.Button();
             this.btnAddLoad = new System.Windows.Forms.Button();
             this.txtDeliveryAddress = new System.Windows.Forms.TextBox();
@@ -48,6 +49,7 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.btnDelete);
             this.panel1.Controls.Add(this.btnApprove);
             this.panel1.Controls.Add(this.btnAddLoad);
             this.panel1.Controls.Add(this.txtDeliveryAddress);
@@ -65,6 +67,20 @@
             this.panel1.Size = new System.Drawing.Size(760, 236);
             this.panel1.TabIndex = 0;
             // 
+            // btnDelete
+            // 
+            this.btnDelete.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(126)))), ((int)(((byte)(249)))));
+            this.btnDelete.FlatAppearance.BorderSize = 0;
+            this.btnDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDelete.ForeColor = System.Drawing.Color.White;
+            this.btnDelete.Location = new System.Drawing.Point(213, 195);
+            this.btnDelete.Name = "btnDelete";
+            this.btnDelete.Size = new System.Drawing.Size(160, 20);
+            this.btnDelete.TabIndex = 23;
+            this.btnDelete.Text = "Delete";
+            this.btnDelete.UseVisualStyleBackColor = false;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
+            // 
             // btnApprove
             // 
             this.btnApprove.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(126)))), ((int)(((byte)(249)))));
@@ -73,7 +89,7 @@
             this.btnApprove.ForeColor = System.Drawing.Color.White;
             this.btnApprove.Location = new System.Drawing.Point(30, 195);
             this.btnApprove.Name = "btnApprove";
-            this.btnApprove.Size = new System.Drawing.Size(256, 20);
+            this.btnApprove.Size = new System.Drawing.Size(160, 20);
             this.btnApprove.TabIndex = 22;
             this.btnApprove.Text = "Approve";
             this.btnApprove.UseVisualStyleBackColor = false;
@@ -228,5 +244,6 @@
         private System.Windows.Forms.Button btnAddLoad;
         private System.Windows.Forms.DataGridView tblJobs;
         private System.Windows.Forms.Button btnApprove;
+        private System.Windows.Forms.Button btnDelete;
     }
 }

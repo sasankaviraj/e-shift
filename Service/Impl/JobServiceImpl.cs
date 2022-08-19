@@ -92,7 +92,7 @@ namespace e_shift.Service.Impl
         {
             try
             {
-                List<JobsTableModel> jobsTableModels =  dbContext.Jobs.Where(j=> j.User.Id == id).Select(res=> new JobsTableModel()
+                List<JobsTableModel> jobsTableModels =  dbContext.Jobs.Where(j=> j.User.Id == id).Where(j => j.IsDeleted == false).Select(res=> new JobsTableModel()
                 {
                     Id = res.Id,
                     Transport = res.Transport.Vehicle,

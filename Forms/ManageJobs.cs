@@ -176,29 +176,6 @@ namespace e_shift.Forms
             clearFields();
             row = tblJobs.Rows[e.RowIndex];
             row.Selected = true;
-            JobId = Convert.ToInt32(row.Cells[2].Value);
-//            if (e.ColumnIndex == 0)
-//            {
-
-//;            }
-//            if (e.ColumnIndex == 1)
-//            {
-//                DialogResult dialogResult = MessageBox.Show("Are You Sure?", "Delete User", MessageBoxButtons.YesNo);
-//                if (dialogResult == DialogResult.Yes)
-//                {
-//                    try
-//                    {
-//                        jobService.Delete(Convert.ToInt32(row.Cells[2].Value));
-//                        MessageBox.Show("User Deleted Successfully");
-//                    }
-//                    catch (Exception ex)
-//                    {
-//                        MessageBox.Show(ex.Message);
-//                    }
-//                }
-
-
-//            }
         }
 
         private void clearFields() {
@@ -222,6 +199,24 @@ namespace e_shift.Forms
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            DialogResult dialogResult = MessageBox.Show("Are You Sure?", "Delete User", MessageBoxButtons.YesNo);
+            if (dialogResult == DialogResult.Yes)
+            {
+                try
+                {
+                    jobService.Delete(Convert.ToInt32(row.Cells[0].Value));
+                    FetchAllJobs();
+                    MessageBox.Show("User Deleted Successfully");
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
             }
         }
     }
