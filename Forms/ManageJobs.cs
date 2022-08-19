@@ -41,7 +41,6 @@ namespace e_shift.Forms
             FetchTransport();
             FetchPickups();
             FetchDeliveries();
-            SetTable();
         }
 
         private void FetchAllJobs()
@@ -151,25 +150,6 @@ namespace e_shift.Forms
             
         }
 
-        private void SetTable()
-        {
-            if (LoggedUserTemp.LoggedUser.UserType != null && LoggedUserTemp.LoggedUser.UserType.Equals("ADMIN"))
-            {
-                DataGridViewButtonColumn buttonColumnEdit = new DataGridViewButtonColumn
-                {
-                    Text = "Approve",
-                    UseColumnTextForButtonValue = true,
-                };
-                DataGridViewButtonColumn buttonColumnDelete = new DataGridViewButtonColumn
-                {
-                    Text = "Delete",
-                    UseColumnTextForButtonValue = true,
-                };
-                tblJobs.Columns.Insert(10, buttonColumnEdit);
-                tblJobs.Columns.Insert(11, buttonColumnDelete);
-            }
-
-        }
 
         private void tblJobs_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -190,6 +170,7 @@ namespace e_shift.Forms
         {
             try
             {
+                JobId =  Convert.ToInt32(row.Cells[0].Value);
                 if (JobId == 0) {
                     throw new Exception("Error on finding the job");
                 }
@@ -204,14 +185,14 @@ namespace e_shift.Forms
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            DialogResult dialogResult = MessageBox.Show("Are You Sure?", "Delete User", MessageBoxButtons.YesNo);
+            DialogResult dialogResult = MessageBox.Show("Are You Sure?", "Delete Job", MessageBoxButtons.YesNo);
             if (dialogResult == DialogResult.Yes)
             {
                 try
                 {
                     jobService.Delete(Convert.ToInt32(row.Cells[0].Value));
                     FetchAllJobs();
-                    MessageBox.Show("User Deleted Successfully");
+                    MessageBox.Show("Job Deleted Successfully");
                 }
                 catch (Exception ex)
                 {

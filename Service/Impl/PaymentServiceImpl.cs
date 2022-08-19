@@ -46,7 +46,7 @@ namespace e_shift.Service.Impl
             }
             catch (Exception e)
             {
-                throw new Exception("Failed To Save User. " + e.Message);
+                throw new Exception("Failed To Save Payment. " + e.Message);
             }
         }
     }
