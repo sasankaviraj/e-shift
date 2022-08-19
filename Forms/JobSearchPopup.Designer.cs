@@ -77,6 +77,7 @@
             this.Controls.Add(this.tblSearch);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "JobSearchPopup";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "JobSearchPopup";
             ((System.ComponentModel.ISupportInitialize)(this.tblSearch)).EndInit();
             this.ResumeLayout(false);

@@ -126,8 +126,8 @@ namespace e_shift.Forms
                 if (!LoggedUserTemp.LoggedUser.Id.Equals(0))
                 {
                     Job job = new Job();
-                    job.FromAddress = txtFromAddress.Text;
-                    job.ToAddress = txtDeliveryAddress.Text;
+                    job.FromAddress = Validator.ValidateField(txtFromAddress.Text,"From Address");
+                    job.ToAddress = Validator.ValidateField(txtDeliveryAddress.Text,"To Address");
 
                     Transport transport = transportService.Get(transportMap[cmbTransport.Text]); ;
                     PickupLocation pickupLocation = pickupLocationService.Get(pickupLocationMap[cmbPickups.Text]);
@@ -146,7 +146,7 @@ namespace e_shift.Forms
                 }
             }
             catch (Exception ex) {
-                MessageBox.Show("Error Occured");
+                MessageBox.Show(ex.Message);
             }
             
         }

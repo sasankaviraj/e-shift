@@ -67,6 +67,8 @@ namespace e_shift.Service.Impl
                         Approval = res.IsApproved,
                         IsDelivered = res.IsDelivered,
                         IsSuccess = res.IsSuccess,
+                        Name = res.User.FirstName + " " + res.User.LastName,
+                        NIC = res.User.NIC,
                         CreatedDate = res.CreatedAt.ToString(),
                     }).ToList<JobsTableModel>();
 
@@ -101,6 +103,8 @@ namespace e_shift.Service.Impl
                     Approval = res.IsApproved,
                     IsDelivered = res.IsDelivered,
                     IsSuccess = res.IsSuccess,
+                    Name = res.User.FirstName + " " + res.User.LastName,
+                    NIC = res.User.NIC,
                     CreatedDate = res.CreatedAt.ToString()
                 }).ToList<JobsTableModel>();
 
@@ -158,6 +162,8 @@ namespace e_shift.Service.Impl
                         Approval = res.IsApproved,
                         IsDelivered = res.IsDelivered,
                         IsSuccess = res.IsSuccess,
+                        Name = res.User.FirstName + " " + res.User.LastName,
+                        NIC = res.User.NIC,
                         CreatedDate = res.CreatedAt.ToString(),
                     }).ToList<JobsTableModel>();
 

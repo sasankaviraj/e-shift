@@ -106,7 +106,7 @@ namespace e_shift.Forms
             row = tblLoads.Rows[e.RowIndex];
             row.Selected = true;
             
-            if (e.ColumnIndex == 0)
+            if (e.ColumnIndex == 3 || e.ColumnIndex == 0)
             {
                 list.RemoveAt(e.RowIndex);
                 SetTable();

@@ -69,9 +69,9 @@
             // 
             // txtWeight
             // 
-            this.txtWeight.Location = new System.Drawing.Point(108, 45);
+            this.txtWeight.Location = new System.Drawing.Point(110, 45);
             this.txtWeight.Name = "txtWeight";
-            this.txtWeight.Size = new System.Drawing.Size(437, 20);
+            this.txtWeight.Size = new System.Drawing.Size(435, 20);
             this.txtWeight.TabIndex = 15;
             // 
             // txtProduct
@@ -87,9 +87,9 @@
             this.lblweight.ForeColor = System.Drawing.Color.White;
             this.lblweight.Location = new System.Drawing.Point(18, 52);
             this.lblweight.Name = "lblweight";
-            this.lblweight.Size = new System.Drawing.Size(81, 13);
+            this.lblweight.Size = new System.Drawing.Size(93, 13);
             this.lblweight.TabIndex = 14;
-            this.lblweight.Text = "Product Weight";
+            this.lblweight.Text = "Product Weight(g)";
             // 
             // panel1
             // 
@@ -173,6 +173,7 @@
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "LoadForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "LoadForm";
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
